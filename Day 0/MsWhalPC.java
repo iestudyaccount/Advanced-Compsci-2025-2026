@@ -31,14 +31,22 @@ public class MsWhalPC{
         System.out.println("The first letter is: " + firstLetterOfComputer);
     }
 
-    public void takeOff() {
-        isThereBird = false;
-        System.out.println("The Bird is no longer :[");
+    public void isBirdOn() {
+        if(isThereBird)
+        {
+            System.out.println("There is bird!");
+        }
+        else
+        {
+            System.out.println("Bird is gone :(");
+        }
     }
 
     public void putBack() {
-        isThereBird = true;
-        System.out.println("THE BIRD HAS RISEN!!!!!! :]");
+        if(isThereBird == false) {
+            isThereBird = true;
+            System.out.println("Bird is back. :)");
+        }
     }
 
     public void wreck() {
@@ -47,10 +55,17 @@ public class MsWhalPC{
         System.out.println(numberOfCords);
     }
 
-    public void replug() {
-        numberOfCords = 4;
-        System.out.println("The number of cords returned are: ");
-        System.out.println(numberOfCords);
+    public void remove(int cordsToTake) {
+        if (cordsToTake > numberOfCords) {
+            System.out.println("You can't take out that many cords");
+            numberOfCords = 0;
+        }
+        else{
+            numberOfCords = numberOfCords - cordsToTake;
+        }
+        if (numberOfCords == 0) {
+            System.out.println("There are no more cords to take.");
+        }
     }
 
     public void swivel() {
@@ -71,6 +86,7 @@ public class MsWhalPC{
 
     public void signIn() {
         loggedIn = true;
-        System.out.print("Ms. What has signed in to her PC.");
+        System.out.print("Ms. Whal has signed in to her PC.");
     }
+
 }
