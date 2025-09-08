@@ -41,7 +41,7 @@ public class Rectangle {
     }
 
     public double calcDiagonal() { 
-        return Math.sqrt(length * length + width * width);
+        return Math.sqrt(Math.pow(length, 2) + Math.pow(width, 2));
     }
 
 

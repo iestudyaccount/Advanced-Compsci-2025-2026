@@ -25,6 +25,19 @@ public class MsWhalPC{
 
     //}
 
+    public MsWhalPC(String typeOfPcAndColor, char firstLetterOfComputer){
+        typeOfPc = typeOfPcAndColor;
+    }
+
+    public String toString() {
+        return "This clock has " + numberOfCords 
+        + " number of cords, and is an " + typeOfPc 
+        + ". The monitor is angled at " + degreesSwiveled
+        + ". Is Ms. Whal logged in? " + loggedIn 
+        + ", and is there a bird on her monitor? " + isThereBird
+        + " Finally, what is the first letter in the word computer?: " + firstLetterOfComputer;
+    }
+
     public void rename() {
         firstLetterOfComputer = 'J';
         System.out.println("The computer has been renamed to John.");
@@ -55,7 +68,7 @@ public class MsWhalPC{
         System.out.println(numberOfCords);
     }
 
-    public void remove(int cordsToTake) {
+    public void takeAway(int cordsToTake) {
         if (cordsToTake > numberOfCords) {
             System.out.println("You can't take out that many cords");
             numberOfCords = 0;
@@ -89,4 +102,16 @@ public class MsWhalPC{
         System.out.print("Ms. Whal has signed in to her PC.");
     }
 
+    public boolean equals(MsWhalPC msCoxPC) {
+        if (
+            this.isThereBird == msCoxPC.isThereBird &&
+            this.numberOfCords == msCoxPC.numberOfCords &&
+            this.degreesSwiveled == msCoxPC.degreesSwiveled &&
+            this.typeOfPc.equals(msCoxPC.typeOfPc) &&
+            this.firstLetterOfComputer == msCoxPC.firstLetterOfComputer
+        ){
+            return true;
+        }
+        return false;
+    }
 }
