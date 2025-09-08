@@ -26,6 +26,8 @@ public class RectangleTester {
         System.out.println("After setter, length is " + toe.getLength());
 
         System.out.println("Testing Perimeter: " + stoutoe.calcPerimeter());
+
+        System.out.println("Testing Diagonal: " + samueloe.calcDiagonal());
     }
     
 }
