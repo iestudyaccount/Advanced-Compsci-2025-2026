@@ -1,21 +1,20 @@
 public class RectangleTester {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         //Declaration: type name
         //Instantitation/initilization: = new type();
         Rectangle joe = new Rectangle();
-        Rectangle moe = new Rectangle();
-        Rectangle toe = new Rectangle();
-        Rectangle olivioe = new Rectangle(6, 7);
-        Rectangle samueloe = new Rectangle(4, 10);
-        Rectangle stoutoe = new Rectangle(8);
-
         joe.getWidth();
+        Rectangle moe = new Rectangle();
         moe.getLength();
-        toe.calcArea();
+        Rectangle toe = new Rectangle();
+        toe.getArea();
         toe.setLength(67);
-        olivioe.calcArea();
-        samueloe.calcDiagonal();
-        stoutoe.calcPerimeter();
+        Rectangle olivioe = new Rectangle(6, 7);
+        olivioe.getArea();
+        Rectangle samueloe = new Rectangle(4, 10);
+        samueloe.getDiagonal();
+        Rectangle stoutoe = new Rectangle(8);
+        stoutoe.getPerimeter();
 
         System.out.println("Testing getWidth: " + joe.getWidth());
 
@@ -25,9 +24,23 @@ public class RectangleTester {
         toe.setLength(67);
         System.out.println("After setter, length is " + toe.getLength());
 
-        System.out.println("Testing Perimeter: " + stoutoe.calcPerimeter());
+        System.out.println("Testing Perimeter: " + stoutoe.getPerimeter());
 
-        System.out.println("Testing Diagonal: " + samueloe.calcDiagonal());
-    }
+        System.out.println("Testing Diagonal: " + samueloe.getDiagonal());
+
+    if (joe.equals(toe)) {
+                System.out.println("They are the same");
+            } 
+            else {
+                System.out.println("They are not the same");
+            }
+
+        if (joe.equals(samueloe)) {
+                System.out.println("They are the same");
+            } 
+            else {
+                System.out.println("They are not the same");
+            }
     
+    }
 }

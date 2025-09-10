@@ -12,12 +12,12 @@ public class Rectangle {
     }
 
     //defines the instance variables with the local parameters
-    public Rectangle(int desiredLength, int desiredWidth){
+    public Rectangle(int desiredLength, int desiredWidth) {
         length = desiredLength;
         width = desiredWidth;
     }
 
-    public Rectangle(int squareSideLength){
+    public Rectangle(int squareSideLength) {
         length = squareSideLength;
         width = squareSideLength;
     }
@@ -32,15 +32,15 @@ public class Rectangle {
     }
 
     //methods 
-    public int calcArea() {
+    public int getArea() {
         return length * width;
     }
     
-    public int calcPerimeter() {
+    public int getPerimeter() {
         return (length * 2) + (width * 2);
     }
 
-    public double calcDiagonal() { 
+    public double getDiagonal() { 
         return Math.sqrt(Math.pow(length, 2) + Math.pow(width, 2));
     }
 
@@ -54,4 +54,13 @@ public class Rectangle {
         width = newWidth;
     }
 
+    public boolean equals(Rectangle otherRectangle) {
+        if (
+                this.length == otherRectangle.length
+                && this.width == otherRectangle.width
+        ) {
+            return true;
+        }
+        return false;
+    }
 }

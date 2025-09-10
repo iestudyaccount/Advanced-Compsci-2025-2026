@@ -11,6 +11,7 @@ public class MsWhalPC{
     private double degreesSwiveled; // = 120.5;
     private char firstLetterOfComputer; // = 'C';
     private boolean loggedIn;
+    private double artificialIntelligence;
 
     public MsWhalPC() {
         numberOfCords = 4;
@@ -113,5 +114,57 @@ public class MsWhalPC{
             return true;
         }
         return false;
+    }
+
+    public boolean getIsThereBird() {
+        return this.isThereBird;
+    }
+
+    public void setIsThereBird(boolean isThereBird) {
+        this.isThereBird = isThereBird;
+    }
+
+    public int getNumberOfCords() {
+        return this.numberOfCords;
+    }
+
+    public void setNumberOfCords(int numberOfCords) {
+        this.numberOfCords = numberOfCords;
+    }
+
+    public String getTypeOfPc() {
+        return this.typeOfPc;
+    }
+    
+    public void setTypeOfPc(String typeOfPc) {
+        this.typeOfPc = typeOfPc;
+    }
+
+    public char getFirstLetterOfComputer() {
+        return this.firstLetterOfComputer;
+    }
+
+    public void setFirstLetterOfComputer(char firstLetterOfComputer) {
+        this.firstLetterOfComputer = firstLetterOfComputer;
+    }
+
+    public double getDegreesSwiveled() {
+        return this.degreesSwiveled;
+    }
+
+    public void setDegreesSwiveled(double degreesSwiveled) {
+        this.degreesSwiveled = degreesSwiveled;
+    }
+
+    public boolean getLoggedIn() {
+        return this.loggedIn;
+    }
+
+    public void setLoggedIn(boolean loggedIn) {
+        this.loggedIn = loggedIn;
+    }
+
+    private double setArtificalIntelligence(int iq) {
+        this.artificialIntelligence = Math.sqrt(iq);
     }
 }
