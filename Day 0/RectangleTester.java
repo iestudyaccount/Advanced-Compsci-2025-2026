@@ -28,19 +28,17 @@ public class RectangleTester {
 
         System.out.println("Testing Diagonal: " + samueloe.getDiagonal());
 
-    if (joe.equals(toe)) {
-                System.out.println("They are the same");
-            } 
-            else {
-                System.out.println("They are not the same");
-            }
+        if (joe.equals(toe)) {
+            System.out.println("They are the same");
+        } else {
+            System.out.println("They are not the same");
+        }
 
         if (joe.equals(samueloe)) {
-                System.out.println("They are the same");
-            } 
-            else {
-                System.out.println("They are not the same");
-            }
+            System.out.println("They are the same");
+        } else {
+            System.out.println("They are not the same");
+        }
     
     }
 }
