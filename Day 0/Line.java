@@ -12,6 +12,12 @@ public class Line {
         this.c = c;
     }
 
+    public Line() {
+        this.a = ;
+        this.b = ;
+        this.c = ;
+    }
+
     public int getA() {
         return a;
     }
@@ -60,6 +66,11 @@ public class Line {
             return true;
         }
         return false;
+    }
+
+    public int generateRandomParameters() {
+        Math.random()*
+
     }
 
 }
