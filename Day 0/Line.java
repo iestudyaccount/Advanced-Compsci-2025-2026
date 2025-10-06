@@ -13,9 +13,9 @@ public class Line {
     }
 
     public Line() {
-        this.a = ;
-        this.b = ;
-        this.c = ;
+        this.a = generateRandomParameters();
+        this.b = generateRandomParameters();
+        this.c = generateRandomParameters();
     }
 
     public int getA() {
@@ -69,8 +69,17 @@ public class Line {
     }
 
     public int generateRandomParameters() {
-        Math.random()*
+        int skibidi = (int) (Math.random() * 51 - 25);
+        return skibidi;
+    }
 
+    public String lineIsParallel(double slope) {
+        if (other.slope == this.slope / other.slope) {
+            return "The lines are parallel.";
+        } else {
+
+            return "The intersection point of the lines is" + 
+        }
     }
 
 }
