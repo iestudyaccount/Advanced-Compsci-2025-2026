@@ -13,6 +13,7 @@ public class Dog {
         this.ownerName = owerName;
         this.age = age;
         this.dogId = dogId;
+        this.dogTag = PawsomeUtils.generateDogTag(this.dogId, this.dogChar);
     }
 
     Dog() {
@@ -20,6 +21,7 @@ public class Dog {
         this.ownerName = "Jessica";
         this.age = 2;
         this.dogId = 696;
+        this.dogTag = PawsomeUtils.generateDogTag(this.dogId, this.dogChar);
     }
 
     // getters
@@ -54,8 +56,8 @@ public class Dog {
 
     // setters
 
-    public boolean isStillInFacility() {
-        return stillInFacility;
+    public void setStillInFacility(boolean stillInFacility) {
+        this.stillInFacility = stillInFacility;
     }
 
     public void setName(String name) {
@@ -104,36 +106,5 @@ public class Dog {
             return true;
         }
         return false;
-    }
-
-    public String generateDogTag(int dogId, char dogChar) {
-        String dogTag = "" + dogId + dogChar;
-        return dogTag;
-    }
-
-    public static char generateDogChar(int dogId) {
-        int firstDig = (int) (dogId * 0.01);
-        int middleDig = (int) ((dogId / 10) % 10);
-        int lastDig = (int) (dogId % 10);
-        int dogChar = 'F' + ((firstDig + middleDig + lastDig) % 10);
-        return (char) dogChar;
-    }
-
-    public static String pickup(Dog dog, String personName) {
-        dog.getStillInFacility();
-        if (dog.getOwnerName().equals(personName)) {
-            dog.stillInFacility = false;
-            System.out.println(dog + " has been returned to their owner " + personName + ".");
-            return dog + " has been returned to their owner " + personName + ".";
-        } else {
-            return "That's not their owner! " + dog + "can't leave!";
-        }
-    }
-
-    public static void checkIn(Dog dog, String personName) {
-        dog.getStillInFacility();
-        dog.getOwnerName();
-        dog.stillInFacility = true;
-        dog.ownerName = personName;
     }
 }
