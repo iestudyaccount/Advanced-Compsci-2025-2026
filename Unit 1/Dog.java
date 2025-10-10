@@ -84,10 +84,6 @@ public class Dog {
         this.dogTag = dogTag;
     }
 
-    public void setStillInFacility(boolean stillInFacility) {
-        this.stillInFacility = stillInFacility;
-    }
-
     // methods
 
     public String toString() {

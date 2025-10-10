@@ -4,6 +4,7 @@ public class DogTester {
         Dog dog2 = new Dog();
         Dog dog3 = new Dog("Pal", "Jim", 23, 693);
         Dog dog4 = new Dog("Fido", "Paul", 5, 123);
+        Dog myDog = new Dog("Stella", "Isabel", 9, 789);
 
         dog1.toString();
         dog2.toString();
@@ -21,12 +22,15 @@ public class DogTester {
         System.out.println(PawsomeUtils.generateDogChar(dog1.getDogId()));
         System.out.println(PawsomeUtils.generateDogChar(dog2.getDogId()));
 
-        System.out.println(dog1.generateDogTag());
-        System.out.println(dog2.generateDogTag());
-        System.out.println(dog3.generateDogTag());
+        System.out.println(PawsomeUtils.generateDogTag(dog1.getDogId(), dog1.getDogChar()));
+        System.out.println(PawsomeUtils.generateDogTag(dog2.getDogId(), dog2.getDogChar()));
+        System.out.println(PawsomeUtils.generateDogTag(dog3.getDogId(), dog3.getDogChar()));
 
         dog1.equals(dog2);
         dog1.equals(dog4);
+
+        dog2.setStillInFacility(false);
+        dog2.toString();
     }
 
 }
