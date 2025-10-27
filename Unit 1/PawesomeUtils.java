@@ -1,4 +1,4 @@
-public class PawsomeUtils {
+public class PawesomeUtils {
 
     public static String generateDogTag(int dogId, char dogChar) {
         String dogTag = "" + dogId + dogChar;
@@ -10,10 +10,7 @@ public class PawsomeUtils {
             return dogId;
         } else {
             int dogIdOne = (int) (Math.random() * 900 + 100);
-            int dogIdTwo = (int) (Math.random() * 900 + 100);
-            int dogIdThree = (int) (Math.random() * 900 + 100);
-
-            dogId = dogIdOne + dogIdTwo + dogIdThree;
+            dogId = dogIdOne;
             return dogId;
         }
     }
@@ -56,7 +53,7 @@ public class PawsomeUtils {
         dog.getStillInFacility();
         dog.getOwnerName();
 
-        PawsomeUtils.validateDogTag(dog);
+        PawesomeUtils.validateDogTag(dog);
         if (validateDogTag(dog) == true) {
             dog.setStillInFacility(true);
             dog.setOwnerName(personName);
@@ -97,12 +94,16 @@ public class PawsomeUtils {
     public static int convertAgeToDogYears(int humanYears) {
         int dogYears;
         if (humanYears > 24) {
-
+            dogYears = 2 + (1 * humanYears);
+            return dogYears;
         } else if (humanYears > 15 && humanYears <= 24) {
             dogYears = 2;
             return dogYears;
         } else if (humanYears == 15) {
             dogYears = 1;
+            return dogYears;
+        } else {
+            dogYears = 0;
             return dogYears;
         }
 
