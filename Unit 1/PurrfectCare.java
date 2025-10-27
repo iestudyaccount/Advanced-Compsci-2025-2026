@@ -81,4 +81,22 @@ public class PurrfectCare {
         return "" + catId + catChar;
     }
 
+    public String toString() {
+
+    }
+
+    public boolean equals(PurrfectCare other) {
+        if (this.name == other.name
+                && this.ownerName == other.ownerName
+                && this.moodLevel == other.moodLevel
+                && this.catId == other.catId
+                && this.catChar == other.catChar
+                && this.isHungry == other.isHungry) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
 }
