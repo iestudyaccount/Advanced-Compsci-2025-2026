@@ -16,13 +16,13 @@ public class PawesomeUtils {
     }
 
     public static boolean validateDogTag(Dog dog) {
-        int dogId = dog.getDogId();
-        char dogChar = dog.getDogChar();
+        int dogId = PawesomeUtils.validateDogId(dog.getDogId());
+        char dogChar = PawesomeUtils.generateDogChar(dogId);
 
         String newDogTag = "" + dogId + dogChar;
         String dogTag = dog.getDogTag();
 
-        if (dogTag == newDogTag) {
+        if (dogTag.equals(newDogTag)) {
             return true;
         } else {
             return false;
