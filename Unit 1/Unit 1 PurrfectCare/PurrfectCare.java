@@ -19,7 +19,7 @@ public class PurrfectCare {
         this.name = "Garfield";
         this.ownerName = "Jon";
         this.moodLevel = 5;
-        this.catId = catId;
+        this.catId = ;
         this.isHungry = true;
     }
 
