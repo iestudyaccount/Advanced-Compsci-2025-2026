@@ -1,4 +1,4 @@
-public class PurrfectCare {
+public class Cat {
 
     String name;
     String ownerName;
@@ -7,7 +7,7 @@ public class PurrfectCare {
     char catChar;
     boolean isHungry;
 
-    PurrfectCare(String name, String ownerName, int moodLevel, String catId) {
+    Cat(String name, String ownerName, int moodLevel, String catId) {
         this.name = name;
         this.ownerName = ownerName;
         this.moodLevel = moodLevel;
@@ -15,11 +15,11 @@ public class PurrfectCare {
         this.isHungry = true;
     }
 
-    PurrfectCare() {
+    Cat() {
         this.name = "Garfield";
         this.ownerName = "Jon";
         this.moodLevel = 5;
-        this.catId = ;
+        this.catId = catId;
         this.isHungry = true;
     }
 
@@ -82,14 +82,18 @@ public class PurrfectCare {
     }
 
     public String toString() {
+        return "==ABOUT " + name + "=="
+        + name + " is a cat. \nTheir tag "
+        + "is " + _ + ".\nCurrently, " 
+        + name + " is in a " +
 
     }
 
-    public boolean equals(PurrfectCare other) {
-        if (this.name == other.name
-                && this.ownerName == other.ownerName
+    public boolean equals(Cat other) {
+        if (this.name.equals(other.name)
+                && this.ownerName.equals(other.ownerName)
                 && this.moodLevel == other.moodLevel
-                && this.catId == other.catId
+                && this.catId.equals(other.catId)
                 && this.catChar == other.catChar
                 && this.isHungry == other.isHungry) {
             return true;

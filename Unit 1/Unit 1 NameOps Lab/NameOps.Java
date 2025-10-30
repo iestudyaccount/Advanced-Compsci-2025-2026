@@ -9,7 +9,7 @@ public class NameOps {
     }
 
     public static int indexOfFirstSpace(String name) {
-        for(int i = 0; i < string.length() - 1; i++)
+        for(int i = 0; i < name.length() - 1; i++)
         {
             char niceChara = charAt(i);
             if(this.niceChara == ' ') {
@@ -21,21 +21,22 @@ public class NameOps {
     }
 
     public static int indexOfSecondSpace(String name) {
-        for(int i = 0; i < string.length() - 1; i++) {
-
-            char nextNiceChar = charAt(i);
-            if(this.nextNiceChar == ' ') {
-                for(int k = this.nextNiceChar; k  )
-
-            } else {
-                return -1;
+ 
+        char nextNiceChar = name.indexOfFirstSpace();
+            if(this.nextNiceChar = '') {
+                for(int k = this.nextNiceChar; k < name.length() - 1; k++)
+                char nextSpace = charAt(k)k
+                if(this.nextSpace == ' ') {
+                    return k;
+                } else {
+                    return -1;
+                }
             }
         }
 
-    }
 
     public static String findFirstName(String name) {
-        for(int i = 0; i < string.legnth() - 1; i++)
+        for(int i = 0; i < name.legnth() - 1; i++)
 
         char lastCharOfFirstName = charAt(i);
         if(this.lastCharOfFirstName == ' ') {
@@ -46,6 +47,12 @@ public class NameOps {
     }
 
     public static String findLastName(String name) {
-        for(int i = 0; i < string.legnth() - 1; i++)
+        for(int i = 0; i < name.legnth() - 1; i++)
+
+        char 
+    }
+
+    public static String findMiddleName(String name) {
+        for(int i = 0; )
     }
 }
