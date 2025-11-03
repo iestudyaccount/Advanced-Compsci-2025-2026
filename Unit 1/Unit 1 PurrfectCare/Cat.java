@@ -19,7 +19,7 @@ public class Cat {
         this.name = "Garfield";
         this.ownerName = "Jon";
         this.moodLevel = 5;
-        this.catId = catId;
+        this.catId = "6328";
         this.isHungry = true;
     }
 
@@ -60,15 +60,16 @@ public class Cat {
     }
 
     public void setMoodLevel(int moodLevel) {
-        this.moodLevel = moodLevel;
+        this.moodLevel = PurrfectUtils.validateMoodLevel(moodLevel);
     }
 
     public void setCatId(String catId) {
-        this.catId = catId;
+        this.catId = PurrfectUtils.validateCatId(catId);
     }
 
     public void setCatChar(char catChar) {
-        this.catChar = catChar;
+        this.catId = PurrfectUtils.validateCatId(catId);
+        this.catChar = PurrfectUtils.generateCatChar(this.catId);
     }
 
     public void setHungry(boolean isHungry) {
@@ -82,10 +83,9 @@ public class Cat {
     }
 
     public String toString() {
-        return "==ABOUT " + name + "=="
-        + name + " is a cat. \nTheir tag "
-        + "is " + _ + ".\nCurrently, " 
-        + name + " is in a " +
+        return "==ABOUT " + this.name + "=="
+                + this.name + " is a cat. \nTheir tag "
+                + "is " + this.catTag() + PurrfectUtils.determineCatMood(this);
 
     }
 

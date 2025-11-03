@@ -36,23 +36,35 @@ public class NameOps {
 
 
     public static String findFirstName(String name) {
-        for(int i = 0; i < name.legnth() - 1; i++)
+        for(int i = 0; i < name.length() - 1; i++) {
 
-        char lastCharOfFirstName = charAt(i);
+            char lastCharOfFirstName = name.charAt(i);
         if(this.lastCharOfFirstName == ' ') {
-            return name.substring(0, this.lastCharOfFirstName-1)
+            return name.substring(0, this.lastCharOfFirstName - 1)
         } else {
             return this.name;
         }
+        }
+
     }
 
     public static String findLastName(String name) {
-        for(int i = 0; i < name.legnth() - 1; i++)
 
-        char 
+        // John Jacob JingleHeimer
+
+        String firstname = NameOps.findFirstName(name);
+        String secondHalf = name.substring(name.indexOfFirstSpace() + 1, name.length()-1);
+        
+        //Jacob JingleHeimer
+
+        String newName = secondHalf.substring(secondHalf.indexOfFirstSpace() + 1, name.length()-1);
+
+        return newName;
+
     }
 
     public static String findMiddleName(String name) {
-        for(int i = 0; )
+        String firstName = NameOps.findFirstName(name);
+        String lastName = NameOps.findLastName(name);
     }
 }

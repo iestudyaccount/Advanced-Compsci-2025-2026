@@ -102,13 +102,8 @@ public class TriangleLoops {
             for (int i = 0; i <= j; i++) {
                 triangle += ('A' + i);
             }
+            
         }
-        triangle = triangle + "A";
-
-        for (int k = 0;, k < numberOfRows; k++) {
-
-        }
-        return triangle;
     }
 
     // right side a + b (+ c.. + d..), left side a + ba ( + cba.. + ...)

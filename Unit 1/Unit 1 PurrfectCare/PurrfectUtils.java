@@ -27,31 +27,34 @@ public class PurrfectUtils {
     public static int generateRandomNumber(int low, int high) {
         int highkeeper = high;
         int lowkeeper = low;
-        if (low < high) {
+        if (low > high) {
             low = highkeeper;
             high = lowkeeper;
         }
 
-        int randomNum = (int) (Math.random() + low * (high + 1));
+        int randomNum = (int) (Math.random() * (high - low + 1) + low);
         return randomNum;
     }
 
     public static String validateCatId(String catId) {
-        int intCatId = 0;
-        String newCatId = "";
-        for (int i = 0; i < catId.length(); i++) {
-            int spot = catId.charAt(i);
-            intCatId += spot * 10;
-        }
+        int intCatId = Integer.valueOf(catId);
 
-        if (intCatId <= 1000 && intCatId >= 9999) {
+        if (intCatId >= 1000 && intCatId <= 9999) {
 
-            newCatId = "" + intCatId;
-            return newCatId;
+            catId = "" + intCatId;
+            return catId;
+
         } else {
-            int randomId = (int) (Math.random() + 1000 * 10000);
-            newCatId = "" + randomId;
-            return newCatId;
+            // int a = (int) (Math.random() * 10);
+            // int b = (int) (Math.random() * 10);
+            // int c = (int) (Math.random() * 10);
+            // int d = (int) (Math.random() * 10);
+            // int abcd = (a * 1000) + (b * 100) + (c * 10) + d;
+            // catId = "" + abcd;
+
+            int abcd = generateRandomNumber(1000, 9999);
+            catId = "" + abcd;
+            return catId;
         }
 
     }
@@ -85,10 +88,10 @@ public class PurrfectUtils {
         int moodDecrease = (int) (Math.random() + 1 * 2);
         if (moodDecrease == 1) {
             cat.setMoodLevel(cat.getMoodLevel() - 1);
-            System.out.println(cat.getName() + "did not like that...");
+            System.out.println(cat.getName() + " did not like that...");
         } else {
             cat.setMoodLevel(cat.getMoodLevel() - 1);
-            System.out.println(cat.getName() + "really hated that!");
+            System.out.println(cat.getName() + " really hated that!");
         }
 
     }
@@ -97,7 +100,7 @@ public class PurrfectUtils {
         cat.setMoodLevel(cat.getMoodLevel() + 1);
         cat.setHungry(true);
         System.out.println("Cleaning the litter box..."
-                + "\n Done!\n" + cat.getName() + "appreciated that.");
+                + "\nDone!\n" + cat.getName() + " appreciated that.");
 
     }
 
@@ -105,7 +108,7 @@ public class PurrfectUtils {
         cat.setMoodLevel(cat.getMoodLevel() + 2);
         cat.setHungry(false);
         System.out.println("Filling up " + cat.getName() + "'s bowl..."
-                + "\nDone!\n" + cat.getName() + "is eating....\n" + cat.getName()
+                + "\nDone!\n" + cat.getName() + " is eating....\n" + cat.getName()
                 + " is full!");
     }
 }

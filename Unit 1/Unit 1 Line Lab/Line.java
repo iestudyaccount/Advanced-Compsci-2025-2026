@@ -23,6 +23,9 @@ public class Line {
     public Line(Point p1, Point p2) {
         this.p1 = p1;
         this.p2 = p2;
+        this.a = -(p2.getY() - p1.getY());
+        this.b = (p2.getX() - p1.getX());
+        this.c = -(this.a * p1.getX() + p1.getY() * this.b);
     }
 
     // getters
@@ -83,7 +86,7 @@ public class Line {
     }
 
     public String toString() {
-        return "" + a + "x + " + b + "y = 0";
+        return "" + a + "x + " + b + "y + c = 0";
     }
 
     public boolean equals(Line other) {
@@ -101,15 +104,16 @@ public class Line {
     }
 
     public double calculateSlopeFromPoints() {
-        int yValues = p2.getY() - p1.getY();
-        int xValues = p2.getX() - p1.getX();
-        double slope = yValues / (double) xValues;
+        int ydigitValues = p2.getY() - p1.getY();
+        int xdigitValues = p2.getX() - p1.getX();
+        double slope = ydigitValues / (double) xdigitValues;
         return slope;
     }
 
     public String generatePointSlopeFormula() {
         String ptSlopeFormula = "(y - " + p1.getY()
-                + ") = m(x - " + p1.getX() + ")";
+                + ") = " + this.calculateSlopeFromPoints()
+                + "(x - " + p1.getX() + ")";
         return ptSlopeFormula;
     }
 
