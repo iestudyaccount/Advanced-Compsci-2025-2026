@@ -71,6 +71,7 @@ public class TriangleLoops {
      */
     // to-do: implement createNumbersTriangle
     public static String createNumbersTriangle(int numberOfRows) {
+
         String triangle = "";
         int j;
         for (j = 0; j <= numberOfRows; j++) {
@@ -94,16 +95,29 @@ public class TriangleLoops {
      */
     // to-do: implement createAlphabetTriangle
     public static String createAlphabetTriangle(int numberOfRows) {
-        String triangle = "";
-        for (int j = 0; j <= numberOfRows; j++) {
-            for (int f = 0; int )
-            triangle = triangle + "A";
-            triangle = triangle + "\n";
-            for (int i = 0; i <= j; i++) {
-                triangle += ('A' + i);
-            }
-            
+        if (numberOfRows > 26) {
+            numberOfRows = 26;
         }
+
+        String triangle = "";
+        for (int j = 0; j < numberOfRows; j++) {
+            for (int k = 0; k < (numberOfRows - j - 1); k++) {
+                // spaces
+            }
+            for (char letter = 'A'; letter < 'A' + j; letter++) {
+                // descending
+                triangle = triangle + letter;
+                triangle = triangle + "\n";
+            }
+            for (char backwards = (char) ('A' + j - 1); backwards >= 'A'; backwards--) {
+                // ascending
+                triangle = triangle + backwards;
+                triangle = triangle + "\n";
+
+            }
+        }
+
+        return triangle;
     }
 
     // right side a + b (+ c.. + d..), left side a + ba ( + cba.. + ...)

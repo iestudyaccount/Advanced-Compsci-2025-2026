@@ -64,7 +64,34 @@ public class NameOps {
     }
 
     public static String findMiddleName(String name) {
+
+        // John Jacob JingleHeimer
+
         String firstName = NameOps.findFirstName(name);
         String lastName = NameOps.findLastName(name);
+
+        //Jacob 
+
+        String middleName = name.substring(firstName.length() + 1, lastName.length());
+
+        return middleName;
+    }
+
+    public static String generateLastFirstMidInitial(String name) {
+
+        String firstName = NameOps.findFirstName(name);
+        String midName = NameOps.findMiddleName(name);
+        String lastName = NameOps.findLastName(name);
+
+        char findMidInitial = midName.charAt(0);
+
+        if (midName == "" && lastName == "") {
+            return firstName;
+        } else if (midName == "") {
+            return lastName + ", " + firstName;
+        } else {
+            return lastName + ", " + firstName + " " + findMidInitial + ".";
+        }
+
     }
 }
