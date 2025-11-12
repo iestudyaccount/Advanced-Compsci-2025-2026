@@ -1,64 +1,62 @@
 public class NameOps {
 
     public static String printMethodCall(String method, String name) {
-        return this.method + "(\"" + this.name + "\"): ";
+        return method + "(\"" + name + "\"): ";
     }
 
     public static String whoIsAwesome(String name) {
-        return this.name + "is awesome!";
+        return name + " is awesome!";
     }
 
     public static int indexOfFirstSpace(String name) {
-        for(int i = 0; i < name.length() - 1; i++)
-        {
-            char niceChara = charAt(i);
-            if(this.niceChara == ' ') {
+        for (int i = 0; i < name.length() - 1; i++) {
+            char niceChara = name.charAt(i);
+            if (niceChara == ' ') {
                 return i;
-            } else {
-                return -1;
             }
         }
+        return -1;
     }
 
     public static int indexOfSecondSpace(String name) {
- 
-        char nextNiceChar = name.indexOfFirstSpace();
-            if(this.nextNiceChar = '') {
-                for(int k = this.nextNiceChar; k < name.length() - 1; k++)
-                char nextSpace = charAt(k)k
-                if(this.nextSpace == ' ') {
-                    return k;
-                } else {
-                    return -1;
-                }
-            }
-        }
 
+        int firstSpaceDigit = indexOfFirstSpace(name);
+        if (firstSpaceDigit == -1) {
+            return -1;
+        }
+        String newName = name.substring(firstSpaceDigit + 1);
+        if (indexOfFirstSpace(newName) == -1) {
+            return -1;
+        }
+        int secondSpaceDigit = indexOfFirstSpace(name) + indexOfFirstSpace(newName) + 1;
+        return secondSpaceDigit;
+
+    }
 
     public static String findFirstName(String name) {
-        for(int i = 0; i < name.length() - 1; i++) {
+        for (int i = 0; i < name.length() - 1; i++) {
 
             char lastCharOfFirstName = name.charAt(i);
-        if(this.lastCharOfFirstName == ' ') {
-            return name.substring(0, this.lastCharOfFirstName - 1)
-        } else {
-            return this.name;
+            if (lastCharOfFirstName == ' ') {
+                return name.substring(0, i);
+            }
         }
-        }
-
+        return name;
     }
 
     public static String findLastName(String name) {
 
-        // John Jacob JingleHeimer
+        int findFirstSpace = indexOfFirstSpace(name);
+        if (findFirstSpace == -1) {
+            return "";
+        }
+        String secondHalfOfName = name.substring((findFirstSpace) + 1);
 
-        String firstname = NameOps.findFirstName(name);
-        String secondHalf = name.substring(name.indexOfFirstSpace() + 1, name.length()-1);
-        
-        //Jacob JingleHeimer
-
-        String newName = secondHalf.substring(secondHalf.indexOfFirstSpace() + 1, name.length()-1);
-
+        int firstSpaceInLastName = indexOfFirstSpace((secondHalfOfName));
+        if (firstSpaceInLastName == -1) {
+            return secondHalfOfName;
+        }
+        String newName = secondHalfOfName.substring(firstSpaceInLastName + 1);
         return newName;
 
     }
@@ -67,12 +65,11 @@ public class NameOps {
 
         // John Jacob JingleHeimer
 
-        String firstName = NameOps.findFirstName(name);
-        String lastName = NameOps.findLastName(name);
+        if (indexOfFirstSpace(name) == -1 || indexOfSecondSpace(name) == -1) {
+            return "";
+        }
 
-        //Jacob 
-
-        String middleName = name.substring(firstName.length() + 1, lastName.length());
+        String middleName = name.substring(indexOfFirstSpace(name) + 1, indexOfSecondSpace(name));
 
         return middleName;
     }
@@ -80,17 +77,16 @@ public class NameOps {
     public static String generateLastFirstMidInitial(String name) {
 
         String firstName = NameOps.findFirstName(name);
-        String midName = NameOps.findMiddleName(name);
         String lastName = NameOps.findLastName(name);
+        String middleName = NameOps.findMiddleName(name);
 
-        char findMidInitial = midName.charAt(0);
-
-        if (midName == "" && lastName == "") {
+        if (middleName.length() == 0 && lastName.length() == 0) {
             return firstName;
-        } else if (midName == "") {
+        } else if (middleName.length() == 0) {
             return lastName + ", " + firstName;
         } else {
-            return lastName + ", " + firstName + " " + findMidInitial + ".";
+            char middleInitial = middleName.charAt(0);
+            return lastName + ", " + firstName + " " + middleInitial + ".";
         }
 
     }

@@ -100,21 +100,20 @@ public class TriangleLoops {
         }
 
         String triangle = "";
-        for (int j = 0; j < numberOfRows; j++) {
-            for (int k = 0; k < (numberOfRows - j - 1); k++) {
+        for (int row = 0; row < numberOfRows; row++) {
+            for (int coulmn = numberOfRows; coulmn > row; coulmn--) {
                 // spaces
+                triangle = triangle + " ";
             }
-            for (char letter = 'A'; letter < 'A' + j; letter++) {
+            for (char letter = 'A'; letter <= 'A' + row; letter++) {
                 // descending
                 triangle = triangle + letter;
-                triangle = triangle + "\n";
             }
-            for (char backwards = (char) ('A' + j - 1); backwards >= 'A'; backwards--) {
+            for (char backwards = (char) ('A' + row - 1); backwards >= 'A'; backwards--) {
                 // ascending
                 triangle = triangle + backwards;
-                triangle = triangle + "\n";
-
             }
+            triangle = triangle + "\n";
         }
 
         return triangle;
