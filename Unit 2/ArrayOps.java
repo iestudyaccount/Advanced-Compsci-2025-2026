@@ -83,8 +83,8 @@ public class ArrayOps {
     public static String findLongestString(String[] array) {
         String longestString = "";
         for (int i = 0; i < array.length; i++) {
+            String tempMaxString = array[i];
             if (array[i] != null) {
-                String tempMaxString = array[i];
 
             }
 

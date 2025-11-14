@@ -27,12 +27,14 @@ public class RPSGame {
     }
 
     public void setPlayerValues(String name, String choice) {
+        Player.setName(name);
+        Player.setChoice(choice);
 
     }
 
     public boolean didPlayerWin(String name, String choice) {
         if (choice == "rock") {
-            if (opponent.getChoice() == "paper") {
+            if (NPC.getChoice() == "paper") {
 
             }
         }

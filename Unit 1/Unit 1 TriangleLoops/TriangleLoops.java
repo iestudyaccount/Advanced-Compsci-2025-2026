@@ -101,7 +101,7 @@ public class TriangleLoops {
 
         String triangle = "";
         for (int row = 0; row < numberOfRows; row++) {
-            for (int coulmn = numberOfRows; coulmn > row; coulmn--) {
+            for (int coulmn = numberOfRows - 1; coulmn > row; coulmn--) {
                 // spaces
                 triangle = triangle + " ";
             }
