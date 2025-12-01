@@ -60,11 +60,11 @@ public class ArrayOps {
      * @return The largest integer in the array.
      */
     public static int findMax(int[] array) {
-        int maxInArray = 0;
+        int maxInArray = array[0];
         for (int i = 0; i < array.length; i++) {
             int tempMax = array[i];
             if (array[i] > tempMax) {
-                maxInArray = i;
+                maxInArray = array[i];
             }
         }
         System.out.println(maxInArray);
@@ -81,15 +81,13 @@ public class ArrayOps {
      * @return The longest String in the array.
      */
     public static String findLongestString(String[] array) {
-        String longestString = "";
+        String longestString = array[0];
         for (int i = 0; i < array.length; i++) {
-            String tempMaxString = array[i];
-            if (array[i] != null) {
-
+            if (array[i].length() > longestString.length()) {
+                longestString = array[i];
             }
-
         }
-        return "";
+        return longestString;
     }
 
     /**
@@ -100,12 +98,16 @@ public class ArrayOps {
      * @return The average length of all the Strings in the array.
      */
     public static double averageStringLength(String[] array) {
+        double average = 0.0;
+        double addToBeDivided = 0.0;
         for (int i = 0; i < array.length; i++) {
             if (array[i] != null) {
-
+                addToBeDivided = addToBeDivided + array[i].length();
             }
         }
-        return 0.0;
+
+        average = addToBeDivided / array.length;
+        return average;
     }
 
     /**
@@ -122,7 +124,14 @@ public class ArrayOps {
      *         string.
      */
     public static int[] countLetterFrequencies(String input) {
-        return new int[26];
+        if (input.equals(null)) {
+            return new int[0];
+        }
+
+        int[] letterMarker = new int[26];
+
+        for (int i = 0; i < input.length(); i++) {
+        }
     }
 
     /**

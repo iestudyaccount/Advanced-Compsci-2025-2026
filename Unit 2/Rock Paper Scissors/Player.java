@@ -15,14 +15,13 @@ public class Player {
 
     // setters
 
-    public void setName() {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public void setChoice() {
+    public void setChoice(String choice) {
         this.choice = choice.toLowerCase();
-        if (RPSGame.validateChoice(this.choice) == true) {
-        } else {
+        if (RPSGame.validateChoice(this.choice) == false) {
             this.choice = RPSGame.generateRandomChoice();
         }
     }

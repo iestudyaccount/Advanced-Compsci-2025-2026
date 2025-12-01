@@ -8,7 +8,7 @@ public class Robot {
     public Robot(int[] hallwayToClean, int startingPosition) {
         // to-do: implement constructor
         this.hallway = hallwayToClean;
-        this.position = startingPosition;
+        setPosition(startingPosition);
         this.isFacingRight = true;
     }
 
@@ -33,7 +33,13 @@ public class Robot {
     }
 
     public void setPosition(int position) {
-        this.position = position;
+        if (position < 0) {
+            this.position = 0;
+        } else if (position >= hallway.length) {
+            this.position = hallway.length - 1;
+        } else {
+            this.position = position;
+        }
     }
 
     public void setFacingRight(boolean isFacingRight) {
@@ -47,9 +53,9 @@ public class Robot {
      */
     public boolean isRobotBlockedByWall() {
         // to-do: implement this method
-        if (isFacingRight() == true && position == hallway.length) {
+        if (isFacingRight() == true && position == hallway.length - 1) {
             return true;
-        } else if (isFacingRight == false && position == hallway[0]) {
+        } else if (isFacingRight == false && position == 0) {
             return true;
         }
         return false;
@@ -60,15 +66,13 @@ public class Robot {
      */
     public void move() {
         // to-do: implement this method
-        for (int i = 0; i < hallway.length; i++) {
-            if (hallway[i] > 1) {
-                hallway[i] = hallway[i] - 1;
-            } else if (hallway[i] == 1) {
-                hallway[i] -= 1;
+        int i = position;
 
-            } else if (hallway[i] > 1 && isRobotBlockedByWall() == true) {
+        if (hallway[i] > 0) {
+            hallway[i] -= 1;
+            return;
+        } else if (hallway[i] == 1 && isRobotBlockedByWall()) {
 
-            }
         }
 
     }
@@ -85,7 +89,12 @@ public class Robot {
     public int clearHall() {
         int count = 0;
         // to-do: implement this method
-
+        displayState();
+        while (hallIsClear() == false) {
+            move();
+            count = count + 1;
+            displayState();
+        }
         return count;
     }
 
@@ -101,7 +110,6 @@ public class Robot {
                 return false;
             }
         }
-
         return true;
     }
 
@@ -113,9 +121,11 @@ public class Robot {
 
         String currentState = "";
 
-        String roboMarker = "<";
-        if (isFacingRight = true) {
+        String roboMarker;
+        if (isFacingRight == true) {
             roboMarker = ">";
+        } else {
+            roboMarker = "<";
         }
 
         for (int i = 0; i < hallway.length; i++) {

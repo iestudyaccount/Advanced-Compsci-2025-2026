@@ -3,10 +3,6 @@ public class RobotTester {
         int[] hall = { 1, 1, 2, 2 };
         Robot robby = new Robot(hall, 1);
 
-        robby.displayState();
-        System.out.println(robby.isRobotBlockedByWall());
-        System.out.println(robby.hallIsClear());
-
         int moveCount = robby.clearHall();
         System.out.println("The total number of moves to clear this hall: " + moveCount);
         System.out
