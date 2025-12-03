@@ -130,8 +130,65 @@ public class ArrayOps {
 
         int[] letterMarker = new int[26];
 
-        for (int i = 0; i < input.length(); i++) {
+        String fixedInput = input.toLowerCase();
+
+        for (int i = 0; i < fixedInput.length(); i++) {
+            if (fixedInput.charAt(i) == 'a') {
+                letterMarker[0] += 1;
+            } else if (fixedInput.charAt(i) == 'b') {
+                letterMarker[1] += 1;
+            } else if (fixedInput.charAt(i) == 'c') {
+                letterMarker[2] += 1;
+            } else if (fixedInput.charAt(i) == 'd') {
+                letterMarker[3] += 1;
+            } else if (fixedInput.charAt(i) == 'e') {
+                letterMarker[4] += 1;
+            } else if (fixedInput.charAt(i) == 'f') {
+                letterMarker[5] += 1;
+            } else if (fixedInput.charAt(i) == 'g') {
+                letterMarker[6] += 1;
+            } else if (fixedInput.charAt(i) == 'h') {
+                letterMarker[7] += 1;
+            } else if (fixedInput.charAt(i) == 'i') {
+                letterMarker[8] += 1;
+            } else if (fixedInput.charAt(i) == 'j') {
+                letterMarker[9] += 1;
+            } else if (fixedInput.charAt(i) == 'k') {
+                letterMarker[10] += 1;
+            } else if (fixedInput.charAt(i) == 'l') {
+                letterMarker[11] += 1;
+            } else if (fixedInput.charAt(i) == 'm') {
+                letterMarker[12] += 1;
+            } else if (fixedInput.charAt(i) == 'n') {
+                letterMarker[13] += 1;
+            } else if (fixedInput.charAt(i) == 'o') {
+                letterMarker[14] += 1;
+            } else if (fixedInput.charAt(i) == 'p') {
+                letterMarker[15] += 1;
+            } else if (fixedInput.charAt(i) == 'q') {
+                letterMarker[16] += 1;
+            } else if (fixedInput.charAt(i) == 'r') {
+                letterMarker[17] += 1;
+            } else if (fixedInput.charAt(i) == 's') {
+                letterMarker[18] += 1;
+            } else if (fixedInput.charAt(i) == 't') {
+                letterMarker[19] += 1;
+            } else if (fixedInput.charAt(i) == 'u') {
+                letterMarker[20] += 1;
+            } else if (fixedInput.charAt(i) == 'v') {
+                letterMarker[21] += 1;
+            } else if (fixedInput.charAt(i) == 'w') {
+                letterMarker[22] += 1;
+            } else if (fixedInput.charAt(i) == 'x') {
+                letterMarker[23] += 1;
+            } else if (fixedInput.charAt(i) == 'y') {
+                letterMarker[24] += 1;
+            } else if (fixedInput.charAt(i) == 'z') {
+                letterMarker[25] += 1;
+            }
         }
+
+        return letterMarker;
     }
 
     /**
@@ -145,6 +202,14 @@ public class ArrayOps {
      * @return The updated array
      */
     public static int[] removeIntAndScoot(int[] array, int index) {
+
+        int[] scootedArray = new int[];
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == index) {
+
+            }
+        }
+
         return new int[0];
     }
 
@@ -156,7 +221,10 @@ public class ArrayOps {
      * @return The resized array
      */
     public static int[] resizeIntArray(int[] array) {
-        return new int[0];
+        int arraySize = array.length;
+        int[] doubledSize = new int[arraySize * 2];
+
+        return new doubledSize;
     }
 
     /**
@@ -173,6 +241,10 @@ public class ArrayOps {
      *         each String
      */
     public static String[] addNumToStringArray(String[] array) {
+        for (int i = 0; i < array.length; i++) {
+            array[i] = 
+
+        }
         return new String[0];
     }
 

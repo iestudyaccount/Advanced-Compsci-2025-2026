@@ -7,7 +7,7 @@ public class Robot {
 
     public Robot(int[] hallwayToClean, int startingPosition) {
         // to-do: implement constructor
-        this.hallway = hallwayToClean;
+        setHallway(hallwayToClean);
         setPosition(startingPosition);
         this.isFacingRight = true;
     }
@@ -29,6 +29,11 @@ public class Robot {
     // setters
 
     public void setHallway(int[] hallway) {
+        for (int i = 0; i < hallway.length; i++) {
+            if (hallway[i] < 0) {
+                hallway[i] = 0;
+            }
+        }
         this.hallway = hallway;
     }
 
@@ -68,13 +73,24 @@ public class Robot {
         // to-do: implement this method
         int i = position;
 
-        if (hallway[i] > 0) {
-            hallway[i] -= 1;
+        if (hallway[i] > 1) {
+            hallway[i]--;
             return;
-        } else if (hallway[i] == 1 && isRobotBlockedByWall()) {
-
         }
 
+        if (hallway[i] == 1) {
+            hallway[i]--;
+        }
+
+        if (isRobotBlockedByWall() == true) {
+            isFacingRight = !isFacingRight;
+        } else {
+            if (isFacingRight == true) {
+                setPosition(i + 1);
+            } else {
+                setPosition(i - 1);
+            }
+        }
     }
 
     /**
