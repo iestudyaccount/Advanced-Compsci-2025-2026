@@ -63,11 +63,10 @@ public class ArrayOps {
         int maxInArray = array[0];
         for (int i = 0; i < array.length; i++) {
             int tempMax = array[i];
-            if (array[i] > tempMax) {
-                maxInArray = array[i];
+            if (array[i] > maxInArray) {
+                maxInArray = tempMax;
             }
         }
-        System.out.println(maxInArray);
         return maxInArray;
     }
 
@@ -83,8 +82,10 @@ public class ArrayOps {
     public static String findLongestString(String[] array) {
         String longestString = array[0];
         for (int i = 0; i < array.length; i++) {
-            if (array[i].length() > longestString.length()) {
-                longestString = array[i];
+            if (array[i] != null) {
+                if (array[i].length() > longestString.length()) {
+                    longestString = array[i];
+                }
             }
         }
         return longestString;
@@ -98,16 +99,25 @@ public class ArrayOps {
      * @return The average length of all the Strings in the array.
      */
     public static double averageStringLength(String[] array) {
+        if (array == null) {
+            return 0.0;
+        }
         double average = 0.0;
         double addToBeDivided = 0.0;
+        int count = 0;
         for (int i = 0; i < array.length; i++) {
             if (array[i] != null) {
                 addToBeDivided = addToBeDivided + array[i].length();
+                count++;
             }
         }
 
-        average = addToBeDivided / array.length;
-        return average;
+        if (count == 0) {
+            return 0.0;
+        } else {
+            average = addToBeDivided / count;
+            return average;
+        }
     }
 
     /**
@@ -124,10 +134,11 @@ public class ArrayOps {
      *         string.
      */
     public static int[] countLetterFrequencies(String input) {
-        if (input.equals(null)) {
+        if (input == null) {
             return new int[0];
         }
 
+        // charAt(i)-97
         int[] letterMarker = new int[26];
 
         String fixedInput = input.toLowerCase();
@@ -203,14 +214,12 @@ public class ArrayOps {
      */
     public static int[] removeIntAndScoot(int[] array, int index) {
 
-        int[] scootedArray = new int[];
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] == index) {
-
-            }
+        for (int i = index; i < array.length - 1; i++) {
+            array[i] = array[i + 1];
         }
+        array[array.length - 1] = 0;
 
-        return new int[0];
+        return array;
     }
 
     /**
@@ -221,10 +230,19 @@ public class ArrayOps {
      * @return The resized array
      */
     public static int[] resizeIntArray(int[] array) {
+        if (array == null) {
+            return new int[0];
+        }
         int arraySize = array.length;
         int[] doubledSize = new int[arraySize * 2];
+        for (int i = 0; i < array.length; i++) {
+            if (array != null) {
+                doubledSize[i] = array[i];
+            }
+        }
 
-        return new doubledSize;
+        return doubledSize;
+
     }
 
     /**
@@ -241,11 +259,16 @@ public class ArrayOps {
      *         each String
      */
     public static String[] addNumToStringArray(String[] array) {
+        if (array == null) {
+            return new String[0];
+        }
         for (int i = 0; i < array.length; i++) {
-            array[i] = 
+            if (array[i] != null) {
+                array[i] = "#" + i + " " + array[i];
+            }
 
         }
-        return new String[0];
+        return array;
     }
 
     /**
@@ -256,7 +279,18 @@ public class ArrayOps {
      * @return The reversed array
      */
     public static int[] reverseIntArray(int[] array) {
-        return new int[0];
+        if (array == null) {
+            return new int[0];
+        }
+        int[] reveresedArray = new int[array.length];
+        int end = array.length - 1;
+        for (int i = 0; i < array.length; i++) {
+            if (array != null) {
+                reveresedArray[i] = array[end - i];
+            }
+
+        }
+        return reveresedArray;
     }
 
 }

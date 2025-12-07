@@ -108,11 +108,19 @@ public class Unit2Exercises {
 
     public static boolean endOther(String a, String b) {
         // to-do: implement this method
+        String lowerA = a.toLowerCase();
+        String lowerB = b.toLowerCase();
+        if
         return false;
     }
 
     public static int countCode(String str) {
         // to-do: implement this method
+        int codeCounted = 0;
+        for (int i = 0; i < str.length(); i++) {
+            if()
+
+        }
         return 0;
     }
 
@@ -127,23 +135,48 @@ public class Unit2Exercises {
     }
 
     public static int sum13(int[] nums) {
-        // to-do: implement this method
-        return 0;
+        int sum = 0;
+        for (int i = 0; i < nums.length - 1; i++) {
+            if (nums[i] != 13 || nums[i + 1] != 13) {
+                sum += nums[i];
+            }
+        }
+        return sum;
     }
 
     public static int[] fizzArray(int n) {
         // to-do: implement this method
-        return new int[0];
+        int[] fizzyArray = new int[n];
+        for (int i = 0; i < n; i++) {
+            fizzyArray[i] = i;
+        }
+        return fizzyArray;
     }
 
     public static boolean haveThree(int[] nums) {
         // to-do: implement this method
-        return false;
+        int countOfThrees = 0;
+        int threeNextToThree = 0;
+        for (int i = 0; i < nums.length - 1; i++) {
+            if (nums[i] == 3) {
+                countOfThrees++;
+            } else if (nums[i] == 3 && nums[i + 1] == 3) {
+                threeNextToThree++;
+            }
 
+        }
+        if (countOfThrees == 3 && threeNextToThree == 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public static String[] fizzArray2(int n) {
         // to-do: implement this method
+        for (int i = 0; i < n; i++) {
+
+        }
         return new String[0];
     }
 

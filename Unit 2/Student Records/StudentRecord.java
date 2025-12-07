@@ -33,6 +33,11 @@ public class StudentRecord {
     // to-do: implement getTestScore
 
     public int getTestScore(int testNumber) {
+        int testScore;
+        if(scores.indexOf(testNumber) == null) {
+            testScore = 0;
+            return testScore;
+        }
     
 
         return 
@@ -83,14 +88,15 @@ public class StudentRecord {
      * @return the double average of the values in scores
      */
     public double getAverage(int first, int last) {
-        int totalScores;
+        int totalScores = 0;
         int average;
-        for (int i = first; i < last; i++) {
+        for (int i = first; i <= last; i++) {
             totalScores += scores[i];
-
         }
 
-        return 0.0;
+        average = totalScores / scores.length;
+
+        return average;
     }
 
     /*
@@ -121,10 +127,12 @@ public class StudentRecord {
      */
 
     public double getFinalAverage() {
-        if (hasImproved()) {
+        if (hasImproved() == true) {
+            getAverage(0, 0)
 
+        } else {
+            getAverage(scores[0], scores[scores.length-1]);
         }
-        return 0.0;
     }
 
 }

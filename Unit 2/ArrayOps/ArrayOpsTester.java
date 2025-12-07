@@ -1,6 +1,6 @@
 public class ArrayOpsTester {
     public static void main(String[] args) {
-        
+
         String[] stringArr1 = { "apple", "banana", "kiwi", "orange" };
         ArrayOps.printStringArray(stringArr1); // Output: [apple, banana, kiwi, orange]
 
@@ -13,7 +13,8 @@ public class ArrayOpsTester {
         // Testing if two arrays are equal
         String arrayString1 = ArrayOps.printStringArray(stringArr1);
         String arrayString2 = ArrayOps.printStringArray(stringArr2);
-        System.out.println("Are the arrays the same? " + arrayString1.equals(arrayString2));
+        System.out.println("Are the arrays the same? "
+                + arrayString1.equals(arrayString2));
 
         int[] intArr1 = { 1, 2, 3, 4, 5 };
         ArrayOps.printIntegerArray(intArr1); // Output: [1, 2, 3, 4, 5]
@@ -33,13 +34,16 @@ public class ArrayOpsTester {
         int[] intArr6 = { 100, 200, 300, 400, 500 };
         System.out.println("Max: " + ArrayOps.findMax(intArr6)); // Output: Max: 500
 
-        System.out.println("Average String Length: " + ArrayOps.averageStringLength(stringArr1));
+        System.out.println("Average String Length: "
+                + ArrayOps.averageStringLength(stringArr1));
         // Output: Average String Length: 5.25
 
-        System.out.println("Average String Length: " + ArrayOps.averageStringLength(stringArr2));
+        System.out.println("Average String Length: "
+                + ArrayOps.averageStringLength(stringArr2));
         // Output: Average String Length: 4.5
 
-        System.out.println("Average String Length: " + ArrayOps.averageStringLength(stringArr3));
+        System.out.println("Average String Length: "
+                + ArrayOps.averageStringLength(stringArr3));
         // Output: Average String Length: 4.5
 
         String input1 = "Hello, World!";
