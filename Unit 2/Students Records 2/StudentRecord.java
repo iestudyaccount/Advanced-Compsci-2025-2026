@@ -33,11 +33,23 @@ public class StudentRecord {
     // to-do: implement getTestScore
 
     public int getTestScore(int testNumber) {
-    
+        if (testNumber >= 0 || testNumber < scores.length) {
+            int testScore = scores[testNumber];
+            return testScore;
 
-        return 
+        } else {
+            return -1;
+        }
+
+        // if(currentScore == -1) {
+        // testScore = 0;
+        // return testScore;
+        // } else {
+        // testScore = currentScore;
+        // return testScore;
+
+        // }
     }
-
     // inherited methods
     // to-do: implement toString
 
@@ -63,7 +75,7 @@ public class StudentRecord {
             }
         }
 
-        if (this.name == other.name
+        if (this.name.equals(other.name)
                 && this.scores.length == other.scores.length) {
             return true;
         }
@@ -83,14 +95,15 @@ public class StudentRecord {
      * @return the double average of the values in scores
      */
     public double getAverage(int first, int last) {
-        int totalScores;
-        int average;
-        for (int i = first; i < last; i++) {
+        double totalScores = 0;
+        double average;
+        for (int i = first; i <= last; i++) {
             totalScores += scores[i];
-
         }
 
-        return 0.0;
+        average = totalScores / (last - first + 1);
+
+        return average;
     }
 
     /*
@@ -100,10 +113,8 @@ public class StudentRecord {
      * @return true if student has improved, false otherwise
      */
     public boolean hasImproved() {
-        int tempValue;
-        for (int i = 0; i < scores.length; i++) {
-            tempValue = scores[i];
-            if (scores[i] < tempValue) {
+        for (int i = 1; i < scores.length; i++) {
+            if (scores[i] < scores[i - 1]) {
                 return false;
             }
         }
@@ -121,10 +132,17 @@ public class StudentRecord {
      */
 
     public double getFinalAverage() {
-        if (hasImproved()) {
+        double average;
+        if (hasImproved() == true) {
+            int first = scores.length / 2;
+            int last = scores.length - 1;
+            average = getAverage(first, last);
+            return average;
 
+        } else {
+            average = getAverage(0, scores.length - 1);
+            return average;
         }
-        return 0.0;
     }
 
 }

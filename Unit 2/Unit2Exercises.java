@@ -116,17 +116,27 @@ public class Unit2Exercises {
 
     public static int countCode(String str) {
         // to-do: implement this method
-        int codeCounted = 0;
-        for (int i = 0; i < str.length(); i++) {
-            if()
+        String fixedString = str.toLowerCase();
+        String countIt = "code";
+        int codeCount = 0;
+        for (int i = 0; i < fixedString.length() - 3; i++) {
+            if (fixedString.substring(i, i + 3) == countIt) {
+                codeCount++;
+            }
 
         }
-        return 0;
+        return codeCount;
     }
 
     public static int countEvens(int[] nums) {
         // to-do: implement this method
-        return 0;
+        int numberOfEvens = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] % 2 == 0) {
+                numberOfEvens++;
+            }
+        }
+        return numberOfEvens;
     }
 
     public static int bigDiff(int[] nums) {

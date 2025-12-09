@@ -10,6 +10,11 @@ public class Course {
 
     }
 
+    public Course(String courseName, int maxEnrollment) {
+        this.courseName = courseName;
+        this.enrolledStudents = new StudentRecord[maxEnrollment];
+    }
+
     // getters
     // to-do: implement getters
 
@@ -20,7 +25,6 @@ public class Course {
     public String getEnrolledStudents() {
         return "" + enrolledStudents;
     }
-
     // setters
     // to-do: implement setters
 
@@ -80,6 +84,53 @@ public class Course {
 
     }
 
+    public boolean isFull() {
+        for (int i = 0; i < enrolledStudents.length; i++) {
+            if (enrolledStudents[i] == null) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void enrollStudent(StudentRecord student) {
+        for (int i = 0; i < enrolledStudents.length; i++) {
+            if (enrolledStudents[i] == null) {
+                enrolledStudents[i] = student;
+                return;
+            }
+        }
+    }
+
+    public boolean dropStudent(StudentRecord student) {
+        for (int i = 0; i < enrolledStudents.length; i++) {
+            if (enrolledStudents[i] == student) {
+                enrolledStudents[i] = null;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int countEnrolledStudents() {
+        int studentCount = 0;
+        for (int i = 0; i < enrolledStudents.length; i++) {
+            if (enrolledStudents[i] != null) {
+                studentCount++;
+            }
+        }
+        return studentCount;
+    }
+
+    public void increaseClassSizeBy(int sizeIncrease) {
+        StudentRecord[] updatedEnrolledStudents = new StudentRecord[sizeIncrease];
+        for (int i = 0; i < enrolledStudents.length; i++) {
+            updatedEnrolledStudents[i] = enrolledStudents[i];
+        }
+
+        enrolledStudents = updatedEnrolledStudents;
+    }
+
     /*
      * Iterates through the enrolledStudents array and returns the name of the
      * student with the best final average.
@@ -95,5 +146,4 @@ public class Course {
      * @return a double representing the average of the specified test number
      */
     // to-do: implement calculateTestAverage
-
 }
