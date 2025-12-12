@@ -183,45 +183,90 @@ public class Unit2Exercises {
     }
 
     public static String[] fizzArray2(int n) {
+        String[] fizzyStrings2 = new String[n];
         // to-do: implement this method
         for (int i = 0; i < n; i++) {
 
         }
-        return new String[0];
+        return fizzyStrings2;
     }
 
     public static int[] zeroFront(int[] nums) {
         // to-do: implement this method
-        return new int[0];
+        int[] zeroesMoved = new int[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == 0) {
+
+            }
+        }
+        return zeroesMoved;
     }
 
     public static String[] wordsWithout(String[] words, String target) {
-        // to-do: implement this method
+        String[] targetless = new String[words.length];
+        for (int i = 0; i < words.length; i++) {
+
+        }
+
         return new String[0];
     }
 
     public static int scoresAverage(int[] scores) {
         // to-do: implement this method
+        int firstHalfAverage = 0;
+        int secondHalfAverage = 0;
+        for (int i = 0; i < scores.length; i++) {
+            if (i < scores.length / 2) {
+                firstHalfAverage += scores[i];
+            }
+            secondHalfAverage = scores[i];
+        }
         return 0;
     }
 
+    // helper method
+
     public static boolean scoresIncreasing(int[] scores) {
         // to-do: implement this method
+        for (int i = 0; i < scores.length - 1; i++) {
+            if (scores[i] <= scores[i + 1]) {
+                return true;
+            }
+        }
         return false;
     }
 
     public static int scoresSpecial(int[] a, int[] b) {
-        // to-do: implement this method
-        return 0;
+        int specialScoreA = 0;
+        int specialScoreB = 0;
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] % 10 == 0 && b[i] % 10 == 0) {
+                specialScoreA = a[i];
+                specialScoreB = b[i];
+            }
+        }
+        return specialScoreA + specialScoreB;
     }
 
     public static String firstTwo(String str) {
-        // to-do: implement this method
-        return "";
+        String firstTwo;
+        if (str.length() < 2) {
+
+        }
+        for (int i = 0; i < str.length(); i++) {
+
+        }
+        return firstTwo;
     }
 
     public static double divide(int a, int b) {
-        // to-do: implement this method
-        return 0.0;
+        double divided = 0.0;
+        if (a < b) {
+            divided = b / a;
+        } else {
+            divided = a / b;
+        }
+
+        return divided;
     }
 }

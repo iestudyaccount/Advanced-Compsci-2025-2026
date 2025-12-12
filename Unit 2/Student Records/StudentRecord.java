@@ -57,9 +57,9 @@ public class StudentRecord {
         String partOne = name + "'s scores: [";
         String partTwo = "";
         for (int i = 0; i < scores.length; i++) {
-            partTwo += scores[i] + ",";
-            if (i == scores.length - 1) {
-                partTwo += scores[i];
+            partTwo += scores[i];
+            if (i < scores.length - 1) {
+                partTwo += ", ";
             }
         }
         String partThree = "]";
