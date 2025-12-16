@@ -1,0 +1,4 @@
+how to get expensive item name
+count amount of expensive items
+if more than 50 bucks 
+    save its name to array (array length is amount you counted)

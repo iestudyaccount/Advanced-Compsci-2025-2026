@@ -110,8 +110,12 @@ public class Unit2Exercises {
         // to-do: implement this method
         String lowerA = a.toLowerCase();
         String lowerB = b.toLowerCase();
-        if
-        return false;
+        if (lowerA.length() >= lowerB.length()) {
+            int start = lowerA.length() - lowerB.length();
+            return lowerA.substring(start).equals(lowerB);
+        }
+        int start = lowerB.length() - lowerA.length();
+        return lowerB.substring(start).equals(lowerA);
     }
 
     public static int countCode(String str) {
@@ -185,7 +189,11 @@ public class Unit2Exercises {
     public static String[] fizzArray2(int n) {
         String[] fizzyStrings2 = new String[n];
         // to-do: implement this method
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n - 1; i++) {
+            fizzyStrings2[i] = "" + i + ",";
+            if (i == n - 1) {
+                fizzyStrings2[i] = "" + i;
+            }
 
         }
         return fizzyStrings2;
@@ -203,58 +211,81 @@ public class Unit2Exercises {
     }
 
     public static String[] wordsWithout(String[] words, String target) {
-        String[] targetless = new String[words.length];
+        int numOfTarget = 0;
         for (int i = 0; i < words.length; i++) {
+            if (words[i] == target) {
+                numOfTarget++;
+            }
 
         }
+        String[] targetless = new String[numOfTarget];
+        for (int i = 0; i < targetless.length; i++) {
+            if (words[i] != target) {
+                targetless[i] = words[i];
+            }
+        }
 
-        return new String[0];
+        return targetless;
     }
 
     public static int scoresAverage(int[] scores) {
         // to-do: implement this method
-        int firstHalfAverage = 0;
-        int secondHalfAverage = 0;
-        for (int i = 0; i < scores.length; i++) {
-            if (i < scores.length / 2) {
-                firstHalfAverage += scores[i];
-            }
-            secondHalfAverage = scores[i];
+        int firstHalfAverage = average(scores, 0, scores.length / 2);
+        int secondHalfAverage = average(scores, scores.length / 2, scores.length);
+        if (firstHalfAverage > secondHalfAverage) {
+            return firstHalfAverage;
+        } else {
+            return secondHalfAverage;
         }
-        return 0;
     }
 
     // helper method
+    private static int average(int[] scores, int start, int end) {
+        int total = 0;
+        for (int i = start; i < end; i++) {
+            total += scores[i];
+        }
+        int average = total / scores.length;
+        return average;
+    }
 
     public static boolean scoresIncreasing(int[] scores) {
         // to-do: implement this method
+        int countIncrease = 0;
         for (int i = 0; i < scores.length - 1; i++) {
             if (scores[i] <= scores[i + 1]) {
-                return true;
+                countIncrease++;
             }
+        }
+
+        if (countIncrease == scores.length - 1) {
+            return true;
         }
         return false;
     }
 
     public static int scoresSpecial(int[] a, int[] b) {
-        int specialScoreA = 0;
-        int specialScoreB = 0;
-        for (int i = 0; i < a.length; i++) {
-            if (a[i] % 10 == 0 && b[i] % 10 == 0) {
-                specialScoreA = a[i];
-                specialScoreB = b[i];
+        return maxSpecial(a) + maxSpecial(b);
+    }
+
+    private static int maxSpecial(int[] arr) {
+        int max = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] % 10 == 0 && arr[i] > max) {
+                max = arr[i];
             }
         }
-        return specialScoreA + specialScoreB;
+        return max;
     }
 
     public static String firstTwo(String str) {
         String firstTwo;
-        if (str.length() < 2) {
-
-        }
-        for (int i = 0; i < str.length(); i++) {
-
+        if (str.length() >= 2) {
+            firstTwo = str.substring(0, 1);
+        } else if (str.length() == 1) {
+            firstTwo = str + 1;
+        } else {
+            firstTwo = "**";
         }
         return firstTwo;
     }

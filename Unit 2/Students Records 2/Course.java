@@ -22,8 +22,8 @@ public class Course {
         return courseName;
     }
 
-    public String getEnrolledStudents() {
-        return "" + enrolledStudents;
+    public StudentRecord[] getEnrolledStudents() {
+        return enrolledStudents;
     }
     // setters
     // to-do: implement setters
@@ -123,7 +123,8 @@ public class Course {
     }
 
     public void increaseClassSizeBy(int sizeIncrease) {
-        StudentRecord[] updatedEnrolledStudents = new StudentRecord[sizeIncrease];
+        StudentRecord[] updatedEnrolledStudents = new StudentRecord[enrolledStudents.length
+                + sizeIncrease];
         for (int i = 0; i < enrolledStudents.length; i++) {
             updatedEnrolledStudents[i] = enrolledStudents[i];
         }
