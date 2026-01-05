@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "DebugDemo",
+            "request": "launch",
+            "mainClass": "DebugDemo",
+            "projectName": "Lab 3-2 Debug_cac30ae1"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"

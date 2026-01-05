@@ -57,7 +57,11 @@ public class DebugDemo {
         String studentName = "Alex";
         String city = null;
         System.out.println("Student: " + studentName);
-        city = getUppercaseCity(city);
+        if (city == null) {
+            city = null;
+        } else {
+            city = getUppercaseCity(city);
+        }
         System.out.println("City in uppercase: " + city);
     }
 
@@ -81,7 +85,12 @@ public class DebugDemo {
                 count++;
             }
         }
-        int averageLength = totalLength / count;
+        int averageLength;
+        if (count == 0) {
+            averageLength = 0;
+        } else {
+            averageLength = totalLength / count;
+        }
         System.out.println("Average name length: " + averageLength);
     }
 
@@ -93,13 +102,56 @@ public class DebugDemo {
         System.out.println("Expected: 13");
     }
 
+    // come back to this one
+
     public static int[] parseNumbers(String csv) {
-        String[] parts = csv.split(",");
-        int[] result = new int[parts.length];
+        if (csv == null) {
+            return new int[0];
+        }
+
+        String partsNew = csv.replace(" ", "");
+        String[] parts = partsNew.split(",");
+        int count = 0;
+        int[] temp = new int[parts.length];
+
         for (int i = 0; i < parts.length; i++) {
-            String part = parts[i];
-            int value = Integer.parseInt(part);
-            result[i] = value;
+            String p = parts[i];
+            if (p == null || p.length() == 0) {
+            } else {
+                int start;
+                if (p.charAt(0) == '-') {
+                    if (p.length() == 1) {
+                        start = -1;
+                    } else {
+                        start = 1;
+                    }
+                } else {
+                    start = 0;
+                }
+
+                boolean allDigits = false;
+                if (start != -1) {
+                    allDigits = true;
+                }
+
+                int j = Math.max(0, start);
+                while (j < p.length() && allDigits == true) {
+                    char c = p.charAt(j);
+                    if (c < '0' || c > '9') {
+                        allDigits = false;
+                    }
+                    j = j + 1;
+                }
+                if (allDigits) {
+                    int value = Integer.parseInt(p);
+                    temp[count] = value;
+                    count = count + 1;
+                }
+            }
+        }
+        int[] result = new int[count];
+        for (int i = 0; i < count; i++) {
+            result[i] = temp[i];
         }
         return result;
     }
@@ -125,7 +177,17 @@ public class DebugDemo {
         for (int i = 0; i < data.length; i++) {
             sum += data[i];
         }
-        return sum / (double) data.length;
+
+        double average = sum / (double) data.length;
+
+        int rand = ((int) (Math.random()) * (2 - 1) + 1);
+        if (rand == 1) {
+            average = average + 1;
+        } else {
+            average = average - 1;
+        }
+
+        return average;
     }
 
     public static String getUppercaseCity(String city) {
@@ -133,13 +195,16 @@ public class DebugDemo {
     }
 
     public static int nameLength(String[] names, int index) {
+        if (names[index] == null) {
+            return 0;
+        }
         return names[index].length();
     }
 
     // Calculates the nth Fibonacci number, 0, 1, 1, 2, 3, 5, 8, 13, 21, 34...
     public static int fib(int n) {
         int a = 0;
-        int b = 2;
+        int b = 1;
         if (n == 0) {
             return a;
         }
