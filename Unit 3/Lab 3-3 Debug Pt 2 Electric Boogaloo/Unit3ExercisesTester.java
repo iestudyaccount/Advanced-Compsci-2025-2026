@@ -51,6 +51,27 @@ public class Unit3ExercisesTester {
         testDescending2();
         testDescending3();
 
+        // Part 3 Testers
+
+        // Parse Pos Int
+
+        testPosInt1();
+        testPosInt2();
+
+        // Index-Specific Element
+
+        testGetElement1();
+        testGetElement2();
+
+        // Square Root of Number
+
+        testSqrt1();
+        testSqrt2();
+
+        // power of (x)
+
+        testCalcPower1();
+        testCalcPower2();
     }
 
     // array printer
@@ -67,14 +88,19 @@ public class Unit3ExercisesTester {
     }
 
     public static String intArrayPrinter(int[] test) {
-        String intArray = "[";
-        for (int i = 0; i < test.length - 1; i++) {
-            if (i != test.length - 1) {
-                intArray += test[i] + ", ";
-            } else {
-                intArray += test[i];
-            }
+        if (test == null) {
+            return null;
         }
+
+        String intArray = "[";
+        for (int i = 0; i < test.length; i++) {
+            intArray += test[i];
+            if (i < test.length - 1) {
+                intArray += ", ";
+            }
+
+        }
+        intArray += "]";
         return intArray;
     }
 
@@ -89,7 +115,7 @@ public class Unit3ExercisesTester {
     }
 
     public static void testExampleNames3() {
-        String[] odderNames = { null };
+        String[] odderNames = null;
         System.out.println(Unit3Exercises.calculateAverageStringLength(odderNames));
     }
 
@@ -122,22 +148,22 @@ public class Unit3ExercisesTester {
 
     public static void testMaxValue1() {
         int[] testArray = { 3, -5, 6, -8, 9 };
-        System.out.println("Expected 9: " + Unit3Exercises.sumEvenNumbers(testArray));
+        System.out.println("Expected 9: " + Unit3Exercises.findMaxValue(testArray));
     }
 
     public static void testMaxValue2() {
         int[] testArray = { 3, -5, 6, -8, 9 };
-        System.out.println("Expected 9: " + Unit3Exercises.sumEvenNumbers(testArray));
+        System.out.println("Expected 9: " + Unit3Exercises.findMaxValue(testArray));
     }
 
     public static void testMaxValue3() {
         int[] testArray = { -3, -5, -6, -8, -9 };
-        System.out.println("Expected -3: " + Unit3Exercises.sumEvenNumbers(testArray));
+        System.out.println("Expected -3: " + Unit3Exercises.findMaxValue(testArray));
     }
 
     public static void testMaxValue4() {
         int[] testArray = null;
-        System.out.println("Expected 0: " + Unit3Exercises.sumEvenNumbers(testArray));
+        System.out.println("Expected 0: " + Unit3Exercises.findMaxValue(testArray));
     }
 
     public static void testPalindrome1() {
@@ -193,7 +219,7 @@ public class Unit3ExercisesTester {
 
     public static void testSumOfSquares2() {
         // placeholder value for testing
-        int[] testArray = { 11 };
+        int[] testArray = null;
         System.out.println(
                 "Expected \"No! BAD INPUT!! SPRAY BOTTLE!!!\": " + Unit3Exercises.calculateSumOfSquares(testArray));
     }
@@ -207,7 +233,7 @@ public class Unit3ExercisesTester {
 
     public static void testNthFibonnaci2() {
         // placeholder value for testing
-        int testInt = 11;
+        int testInt = -11;
         System.out
                 .println("Expected \"No! BAD INPUT!! SPRAY BOTTLE!!!\"\": " + Unit3Exercises.getNthFibonacci(testInt));
     }
@@ -233,4 +259,78 @@ public class Unit3ExercisesTester {
 
     }
 
+    // Day 3 Testers
+
+    // Parse Positive Integers
+
+    public static void testPosInt1() {
+        String testString = "4";
+        try {
+            System.out.println("Expected 4: " + Unit3Exercises.parsePositiveInteger(testString));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static void testPosInt2() {
+        String testString = "-4";
+        try {
+            System.out.println("Expected 4: " + Unit3Exercises.parsePositiveInteger(testString));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    // Get Index Element
+
+    public static void testGetElement1() {
+        int index = 2;
+        String[] array = { "russelbuck", "boa", "the cranberries", "alex g" };
+        System.out.println("Expected \"the cranberries\": " + Unit3Exercises.getArrayElement(array, index));
+    }
+
+    public static void testGetElement2() {
+        int index = -2;
+        String[] array = { "russelbuck", "boa", "the cranberries", "alex g" };
+        System.out.println("Expected null: " + Unit3Exercises.getArrayElement(array, index));
+    }
+
+    // Square Root of Number
+
+    public static void testSqrt1() {
+        int number = 16;
+        System.out.println("Expected 4: " + Unit3Exercises.calculateSquareRoot(number));
+    }
+
+    public static void testSqrt2() {
+        int number = -6;
+        System.out.println("Expected 4: " + Unit3Exercises.calculateSquareRoot(number));
+    }
+
+    //
+
+    public static void testAddElements1() {
+        int[] testArray = { 3, 5, 6, 3, 2 };
+        System.out.println("Expected 19:" + Unit3Exercises.sumArrayElements(testArray));
+
+    }
+
+    public static void testAddElements2() {
+        int[] testArray = null;
+        System.out.println("Expected null" + Unit3Exercises.sumArrayElements(testArray));
+    }
+
+    // Power of a Base
+
+    public static void testCalcPower1() {
+        double testDouble = 2.5;
+        int testInt = 2;
+        System.out.println("Expected 6.25: " + Unit3Exercises.calculatePower(testDouble, testInt));
+    }
+
+    public static void testCalcPower2() {
+        double testDouble = 2.5;
+        int testInt = -2;
+        System.out.println("Expected null: " + Unit3Exercises.calculatePower(testDouble, testInt));
+    }
 }

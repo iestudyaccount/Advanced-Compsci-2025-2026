@@ -25,12 +25,9 @@ public class Unit3Exercises {
         while (left < right) {
             char temp = chars[left];
             chars[left] = chars[right];
-            chars[right - 1] = temp;
+            chars[right] = temp;
             left++;
             right--;
-        }
-        if (chars.length > 2 && chars[0] == chars[chars.length - 1]) {
-            chars[0] = Character.toLowerCase(chars[0]);
         }
         return new String(chars);
     }
@@ -52,11 +49,9 @@ public class Unit3Exercises {
     // Intended: return the largest value found in the array.
     public static int findMaxValue(int[] numbers) {
         int max = numbers[0];
-        for (int i = 0; i < numbers.length - 1; i++) {
+        for (int i = 0; i < numbers.length; i++) {
             if (numbers[i] > max) {
-                max = numbers[i - 1];
-            } else if (numbers[i] == max && i % 2 == 0) {
-                max = max + 1;
+                max = numbers[i];
             }
         }
         return max;
@@ -71,17 +66,16 @@ public class Unit3Exercises {
 
         int left = 0;
         int right = str.length() - 1;
-        int sameCounter;
         while (left < right) {
             char a = str.charAt(left);
-            char b = str.charAt(right - 1);
+            char b = str.charAt(right);
             if (a != b) {
-                return left % 2 == 0;
+                return false;
             }
             left++;
             right--;
         }
-        return str.length() % 3 == 0;
+        return true;
     }
 
     // Intended: sum only the even numbers in the array.
@@ -142,9 +136,9 @@ public class Unit3Exercises {
         if (arr == null) {
             throw new IllegalArgumentException("No! BAD INPUT!! SPRAY BOTTLE!!!");
         } else {
-            for (int i = arr.length - 1; i >= 0; i--) {
+            for (int i = 0; i < arr.length; i++) {
                 for (int j = i + 1; j < arr.length; j++) {
-                    if (arr[j] < arr[i]) {
+                    if (arr[j] > arr[i]) {
                         int temp = arr[i];
                         arr[i] = arr[j];
                         arr[j] = temp;
@@ -152,6 +146,74 @@ public class Unit3Exercises {
                 }
             }
             return arr;
+        }
+    }
+
+    // Day 3 Methods
+
+    // Converts string to a positive integer
+    // Method should return 1 if it's negative
+
+    public static int parsePositiveInteger(String str) {
+        int number = Integer.parseInt(str);
+        if (number < 0) {
+            throw new NumberFormatException("NO!! BAD!! NUMBER CANT BE NEGATIVE!!");
+        }
+        return number;
+    }
+
+    // Returns an element at a specific index in an array
+
+    public static String getArrayElement(String[] arr, int index) {
+        try {
+            return arr[index];
+        } catch (Exception e) {
+            System.out.println("Index can't be negative!");
+            return null;
+        }
+
+    }
+
+    // Calculates the square root of a inputted number
+
+    public static double calculateSquareRoot(int number) {
+        try {
+            return Math.sqrt(number);
+        } catch (Exception e) {
+            System.out.println("Input can't be negative!");
+            return Double.NaN;
+        }
+    }
+
+    // Sum Array Elements
+
+    public static int sumArrayElements(int[] array) {
+
+        try {
+            int sum = 0;
+            for (int i = 0; i < array.length; i++) {
+                sum += array[i];
+            }
+            return sum;
+        } catch (Exception e) {
+
+            return 0;
+        }
+    }
+
+    // Calculates Power of a Base Number
+
+    public static double calculatePower(double base, int exponent) {
+
+        try {
+            if (exponent < 0) {
+                throw new IllegalArgumentException("NO NEGATIVE EXPONENT!! BAD!!");
+            } else {
+                return Math.pow(base, exponent);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return 1;
         }
     }
 }
