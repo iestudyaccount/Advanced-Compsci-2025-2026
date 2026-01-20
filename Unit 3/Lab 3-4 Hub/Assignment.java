@@ -5,6 +5,12 @@ public class Assignment {
 
     public Assignment(String title, String description) {
         // Students: add your own validation and exceptions as you see fit
+        if (title == null || title == "") {
+            throw new IllegalArgumentException("Title cannot be blank");
+        }
+        if (description == null || description == "") {
+            throw new IllegalArgumentException("Description cannot be blank");
+        }
         setTitle(title);
         setDescription(description);
     }
