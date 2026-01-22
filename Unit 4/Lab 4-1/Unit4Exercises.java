@@ -7,18 +7,24 @@ public class Unit4Exercises {
         // to-do: implement the method
         // keep n*2 in mind,
 
+        int beginning = 0;
         int[] testSequence1 = new int[n];
         int[] testSequence2 = new int[n];
+
+        String testString1 = "";
+        String testString2 = "";
 
         for (int i = 0; i < n; i++) {
             testSequence1[i] = nums[i];
         }
 
         for (int i = nums.length - n; i < nums.length - 1; i++) {
-            testSequence2[i] = nums[i];
+            testSequence2[beginning] = nums[i];
+            beginning++;
         }
-        if (testSequence1 == testSequence2) {
-            return true;
+
+        for (int i = 0; i < n; i++) {
+
         }
         return false;
     }
@@ -88,14 +94,27 @@ public class Unit4Exercises {
 
     // Method 5: moveEvenBeforeOdd
     public static int[] moveEvenBeforeOdd(int[] nums) {
-        // to-do: implement the method
+        if (nums == null) {
+            return null;
+        }
+
         int[] rearrangedNums = new int[nums.length];
+        int evenTemp = 0;
+
         for (int i = 0; i < nums.length - 1; i++) {
             if (nums[i] % 2 == 0) {
-
+                evenTemp++;
+                rearrangedNums[evenTemp] = nums[i];
             }
         }
-        return new int[0];
+
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] % 2 != 0) {
+                evenTemp++;
+                rearrangedNums[evenTemp] = nums[i];
+            }
+        }
+        return rearrangedNums;
     }
 
     // ArrayList Methods
@@ -123,6 +142,51 @@ public class Unit4Exercises {
     public static ArrayList<Integer> squarePlus10(ArrayList<Integer> nums) {
         // to-do: implement the method
         return new ArrayList<>();
+    }
+
+    // array printers
+
+    public static String printStringArray(String[] placeholder) {
+        if (placeholder == null) {
+            return null;
+        }
+
+        if (placeholder.length == 0) {
+            return null;
+        }
+
+        String outArray = "[";
+        for (int i = 0; i < placeholder.length; i++) {
+            outArray += placeholder[i];
+            if (i < placeholder.length - 1) {
+                outArray += ", ";
+            }
+        }
+
+        outArray += "]";
+        return outArray;
+    }
+
+    public static String printIntArray(int[] placeholder) {
+
+        if (placeholder == null) {
+            return null;
+        }
+
+        if (placeholder.length == 0) {
+            return null;
+        }
+
+        String outArray = "[";
+        for (int i = 0; i < placeholder.length; i++) {
+            outArray += "" + placeholder[i];
+            if (i < placeholder.length - 1) {
+                outArray += ", ";
+            }
+        }
+
+        outArray += "]";
+        return outArray;
     }
 
 }

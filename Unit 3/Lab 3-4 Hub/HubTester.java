@@ -6,16 +6,34 @@ public class HubTester {
         Student testStudent4 = new Student(null, "rrrrssss", "null@nothing.com");
 
         Student[] testArray1 = { testStudent1, testStudent2, testStudent3, testStudent4 };
-        int studentCount1 = testArray1.length;
+
+        Assignment testAssign1 = new Assignment("test program", "program for testing");
+        Assignment testAssign2 = new Assignment(null, "theres nothing here!");
+        Assignment testAssign3 = new Assignment("test program 2", null);
+
+        Hub testHub1 = new Hub();
 
         // student
         nameWithAtSymbol(testStudent1);
         nameIsTaken(testStudent1);
         studentNameMissing4Pass(testStudent3);
+        studentNameNull4Pass(testStudent4);
+        noNameOnAssignment(testStudent1, testAssign2);
+        noDescOnAssignment(testStudent1, testAssign3);
+        noMoreAssignments();
+        noMoreSpaceInAssignments();
 
         // hub
 
-        // assignment
+        noUsername4Login();
+        wrongPassword();
+        studentDoesntExist();
+        studentAlreadyExists(null, testArray1);
+        atSymbolInName();
+        noName();
+        noPassword();
+        noEmail();
+        studentOutOfIndex();
 
     }
 
@@ -58,44 +76,39 @@ public class HubTester {
         }
     }
 
-    public static void noAssignments2TurnIn(Assignment[] testAssignments) {
+    public static void noNameOnAssignment(Student testStudent, Assignment testAssignment) {
         try {
-            testAssignments.submitAssignment();
+            testStudent.submitAssignment(testAssignment.getTitle(), testAssignment.getDescription());
         } catch (Exception e) {
             System.out.println(e.toString());
-            System.out.println("Trying to turn in assignments when there are none");
-        }
-
-    public static void assignCountTooHigh(Student testStudent) {
-        // fill in later
-    }
-
-    public static void firstStringBlank(Student testStudent) {
-        // fill in later
-        try {
-            testStudent.requireNotBlank();
-        } catch (Exception e) {
-            System.out.println(e.toString());
-            System.out.println("Neither of the 2 strings can be blank, but the 1st one is.");
+            System.out.println("Can't submit an assignment if it has no name.");
         }
     }
 
-    public static void SecondStringBlank(Student testStudent) {
+    public static void noDescOnAssignment(Student testStudent, Assignment testAssignment) {
         try {
-            testStudent.requireNotBlank();
+            testStudent.submitAssignment(testAssignment.getTitle(), testAssignment.getDescription());
         } catch (Exception e) {
             System.out.println(e.toString());
-            System.out.println("Neither of the 2 strings can be blank, but the 2nd one is.");
+            System.out.println("Can't submit an assignment if it doesn't have a description.");
         }
     }
 
-    public static void noEmail(Student testStudent) {
-        // fill in later
+    public static void noMoreAssignments(Student testStudent, Assignment testAssignment) {
         try {
-            testStudent.requireEmail("cool.com");
+            testStudent.submitAssignment(testAssignment.getTitle(), testAssignment.getDescription());
         } catch (Exception e) {
             System.out.println(e.toString());
-            System.out.println("No @ symbol in the email, so not valid");
+            System.out.println("Can't submit an assignment if the space to hold assignments is already full.");
+        }
+    }
+
+    public static void noMoreSpaceInAssignments(Student testStudent, Assignment testAssignment) {
+        try {
+            testStudent.submitAssignment(testAssignment.getTitle(), testAssignment.getDescription());
+        } catch (Exception e) {
+            System.out.println(e.toString());
+            System.out.println("Can't submit an assignment if there is no space left in the array itself.");
         }
     }
 
@@ -176,7 +189,7 @@ public class HubTester {
         }
     }
 
-    public static void studentOutOfIndex(Hub testHub) {
+    public static void studentOutOfIndex(Hub testHub, int index) {
         try {
             testHub.loginStudent("Shoopy", "aaaabbbb");
         } catch (Exception e) {
