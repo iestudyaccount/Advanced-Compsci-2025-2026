@@ -11,22 +11,21 @@ public class Unit4Exercises {
         int[] testSequence1 = new int[n];
         int[] testSequence2 = new int[n];
 
-        String testString1 = "";
-        String testString2 = "";
-
         for (int i = 0; i < n; i++) {
             testSequence1[i] = nums[i];
         }
 
-        for (int i = nums.length - n; i < nums.length - 1; i++) {
+        for (int i = nums.length - n; i < nums.length; i++) {
             testSequence2[beginning] = nums[i];
             beginning++;
         }
 
         for (int i = 0; i < n; i++) {
-
+            if (testSequence1[i] != testSequence2[i]) {
+                return false;
+            }
         }
-        return false;
+        return true;
     }
 
     // Method 2: hasThreeConsecutive
@@ -37,23 +36,20 @@ public class Unit4Exercises {
         for (int i = 0; i < nums.length - 1; i++) {
             if (nums[i] % 2 == 0) {
                 consecutiveCounterEven++;
-                if (nums[i] % 2 != 0) {
+                if (nums[i + 1] % 2 != 0) {
                     consecutiveCounterEven = 0;
                 }
             } else if (nums[i] % 2 != 0) {
                 consecutiveCounterOdd++;
-                if (nums[i] % 2 == 0) {
+                if (nums[i + 1] % 2 == 0) {
                     consecutiveCounterOdd = 0;
                 }
             }
             if (consecutiveCounterEven >= 3 || consecutiveCounterOdd >= 3) {
-                break;
+                return true;
             }
         }
 
-        if (consecutiveCounterEven >= 3 || consecutiveCounterOdd >= 3) {
-            return true;
-        }
         return false;
     }
 
@@ -64,8 +60,10 @@ public class Unit4Exercises {
         int lengthStart2End = end - start;
         int[] arrayToBeFilled = new int[lengthStart2End];
         for (int i = 0; i < lengthStart2End; i++) {
-            for (int k = start; k < end; k++) {
-                arrayToBeFilled[i] = k;
+            if (i == 0) {
+                arrayToBeFilled[i] = start;
+            } else {
+                arrayToBeFilled[i] = start + i;
             }
         }
 
@@ -75,21 +73,20 @@ public class Unit4Exercises {
     // Method 4: fizzBuzz
     public static String[] fizzBuzz(int start, int end) {
         // to-do: implement the method
-        int lengthStart2End = end - start;
-        String[] arrayToFB = new String[lengthStart2End];
-        for (int i = 0; i < lengthStart2End; i++) {
-            for (int k = start; k < end; k++) {
-                if (k % 3 == 0) {
-                    arrayToFB[i] = "Fizz";
-                } else if (k % 5 == 0) {
-                } else if (k % 3 == 0 && i % 5 == 0) {
-                    arrayToFB[i] = "FizzBuzz";
-                } else {
-                    arrayToFB[i] = "" + k;
-                }
+        int[] initialArray = generateNumberSequence(start, end);
+        String[] arrayToFb = new String[initialArray.length];
+        for (int i = 0; i < initialArray.length; i++) {
+            if (initialArray[i] % 3 == 0 && initialArray[i] % 5 == 0) {
+                arrayToFb[i] = "FizzBuzz";
+            } else if (initialArray[i] % 5 == 0) {
+                arrayToFb[i] = "Buzz";
+            } else if (initialArray[i] % 3 == 0) {
+                arrayToFb[i] = "Fizz";
+            } else {
+                arrayToFb[i] = "" + initialArray[i];
             }
         }
-        return new String[0];
+        return arrayToFb;
     }
 
     // Method 5: moveEvenBeforeOdd
@@ -100,18 +97,22 @@ public class Unit4Exercises {
 
         int[] rearrangedNums = new int[nums.length];
         int evenTemp = 0;
+        int placeToBegin = 0;
+        int oddTemp = 0;
 
-        for (int i = 0; i < nums.length - 1; i++) {
+        for (int i = 0; i < nums.length; i++) {
             if (nums[i] % 2 == 0) {
-                evenTemp++;
-                rearrangedNums[evenTemp] = nums[i];
+                evenTemp = nums[i];
+                rearrangedNums[placeToBegin] = evenTemp;
+                placeToBegin++;
             }
         }
 
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] % 2 != 0) {
-                evenTemp++;
-                rearrangedNums[evenTemp] = nums[i];
+                oddTemp = nums[i];
+                rearrangedNums[placeToBegin] = oddTemp;
+                placeToBegin++;
             }
         }
         return rearrangedNums;

@@ -53,7 +53,7 @@ public class MatrixFun {
     public boolean equals(int[][] other) {
         for (int r = 0; r < matrix.length; r++) {
             for (int c = 0; c < matrix[r].length; c++) {
-                if(this[])
+                if()
             }
         }
         return true;
@@ -70,6 +70,8 @@ public class MatrixFun {
     }
 
     public void swapRow(int rowA, int rowB) {
+        int placeHolderA = 0;
+        int placeHolderB = 0;
     }
 
     // additonal methdods

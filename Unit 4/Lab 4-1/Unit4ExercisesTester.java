@@ -19,11 +19,16 @@ public class Unit4ExercisesTester {
         // Generate # sequence
 
         System.out.println(
-                "Expected [2, 3, 4, 5]: " + Unit4Exercises.printIntArray(Unit4Exercises.generateNumberSequence(2, 6)));
+                "Expected [2, 3, 4, 5]: "
+                        + Unit4Exercises.printIntArray(Unit4Exercises.generateNumberSequence(2, 6)));
 
         // fizzBuzzin' it
 
-        System.out.println("Expected :" + Unit4Exercises.printStringArray(Unit4Exercises.fizzBuzz(3, 13)));
+        System.out.println("Expected [Fizz, 4, Buzz, Fizz, 7, 8, Fizz, Buzz,"
+                + " 11, Fizz, 13, 14, FizzBuzz]:"
+                + Unit4Exercises.printStringArray(Unit4Exercises.fizzBuzz(3, 16)));
+        System.out.println("Expected [Buzz, Fizz, 7, 8, Fizz, Buzz, 11, Fizz, 13, 14, FizzBuzz]: "
+                + Unit4Exercises.printStringArray(Unit4Exercises.fizzBuzz(5, 16)));
 
         // Even < Odd
 

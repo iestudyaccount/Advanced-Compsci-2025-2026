@@ -7,9 +7,9 @@ public class HubTester {
 
         Student[] testArray1 = { testStudent1, testStudent2, testStudent3, testStudent4 };
 
-        Assignment testAssign1 = new Assignment("test program", "program for testing");
         Assignment testAssign2 = new Assignment(null, "theres nothing here!");
         Assignment testAssign3 = new Assignment("test program 2", null);
+        Assignment testAssign7 = new Assignment("test program 6", "haha");
 
         Hub testHub1 = new Hub();
 
@@ -20,20 +20,19 @@ public class HubTester {
         studentNameNull4Pass(testStudent4);
         noNameOnAssignment(testStudent1, testAssign2);
         noDescOnAssignment(testStudent1, testAssign3);
-        noMoreAssignments();
-        noMoreSpaceInAssignments();
+        noMoreAssignments(testStudent2, testAssign7);
 
         // hub
 
-        noUsername4Login();
-        wrongPassword();
-        studentDoesntExist();
-        studentAlreadyExists(null, testArray1);
-        atSymbolInName();
-        noName();
-        noPassword();
-        noEmail();
-        studentOutOfIndex();
+        noUsername4Login(testHub1, testArray1);
+        wrongPassword(testHub1, testArray1);
+        studentDoesntExist(testHub1, testArray1);
+        studentAlreadyExists(testHub1, testArray1);
+        atSymbolInName(testHub1);
+        noName(testHub1);
+        noPassword(testHub1);
+        noEmail(testHub1);
+        studentOutOfIndex(testHub1, testArray1);
 
     }
 
@@ -97,18 +96,15 @@ public class HubTester {
     public static void noMoreAssignments(Student testStudent, Assignment testAssignment) {
         try {
             testStudent.submitAssignment(testAssignment.getTitle(), testAssignment.getDescription());
-        } catch (Exception e) {
-            System.out.println(e.toString());
-            System.out.println("Can't submit an assignment if the space to hold assignments is already full.");
-        }
-    }
-
-    public static void noMoreSpaceInAssignments(Student testStudent, Assignment testAssignment) {
-        try {
+            testStudent.submitAssignment(testAssignment.getTitle(), testAssignment.getDescription());
+            testStudent.submitAssignment(testAssignment.getTitle(), testAssignment.getDescription());
+            testStudent.submitAssignment(testAssignment.getTitle(), testAssignment.getDescription());
+            testStudent.submitAssignment(testAssignment.getTitle(), testAssignment.getDescription());
             testStudent.submitAssignment(testAssignment.getTitle(), testAssignment.getDescription());
         } catch (Exception e) {
             System.out.println(e.toString());
-            System.out.println("Can't submit an assignment if there is no space left in the array itself.");
+
+            System.out.println("Can't submit an assignment if the space to hold assignments is already full.");
         }
     }
 
@@ -189,7 +185,7 @@ public class HubTester {
         }
     }
 
-    public static void studentOutOfIndex(Hub testHub, int index) {
+    public static void studentOutOfIndex(Hub testHub, Student[] testArray) {
         try {
             testHub.loginStudent("Shoopy", "aaaabbbb");
         } catch (Exception e) {
