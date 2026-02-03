@@ -47,8 +47,8 @@ public class ArrayListPractice {
     // returns the number of Strings in the ArrayList with an odd length.
     public static int countOddLength(ArrayList<String> list) {
         // to-do: implement method
-        if (list.isEmpty() == true) {
-            return 0;
+        if (list == null) {
+            throw new IllegalArgumentException("Length of list can't be null.");
         }
 
         int countOfOdds = 0;
@@ -83,9 +83,14 @@ public class ArrayListPractice {
     // them by iterating from the beginning of the list.
     public static void removeStrings(ArrayList<String> list, char firstLetter) {
         // to-do: implement method
+        if (list == null) {
+            throw new IllegalArgumentException("Length of list cannot be null.");
+        }
+
         for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).indexOf(0) == firstLetter) {
-                list.set(i, null);
+            String currentString = list.get(i);
+            if (currentString != null && currentString.length() != 0 && currentString.charAt(0) == firstLetter) {
+                list.remove(i);
             }
         }
     }
@@ -96,8 +101,9 @@ public class ArrayListPractice {
     public static void removeStrings2(ArrayList<String> list, char firstLetter) {
         // to-do: implement method
         for (int i = list.size() - 1; i >= 0; i--) {
-            if (list.get(i).indexOf(0) == firstLetter) {
-                list.set(i, null);
+            String currentString = list.get(i);
+            if (currentString != null && currentString.length() != 0 && currentString.charAt(0) == firstLetter) {
+                list.remove(i);
             }
         }
     }
