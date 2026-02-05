@@ -23,7 +23,7 @@ public class StudentAnswerSheet {
         return this.name;
     }
 
-    public double getScore() {
+    public double getTestScore() {
         return this.testScore;
     }
 
@@ -51,6 +51,7 @@ public class StudentAnswerSheet {
             }
 
             double finalGrade = ((correctAnswers * 1) - (incorrectAnswers * 0.25));
+            testScore = finalGrade;
             return finalGrade;
         }
     }

@@ -7,15 +7,18 @@ public class SkyView {
         // go one way, and when you hit that last space in the line, drop down and start
         // going the other way. when you hit that last space, drop down again and go the
         // way you started off (alternating)
+        int keepPlaceOneD = 0;
 
         for (int rowNum = 0; rowNum < numOfRows; rowNum++) {
             if (rowNum % 2 == 0) {
                 for (int col = 0; col < view[rowNum].length; col++) {
-                    view[rowNum][col] = scanned[col];
+                    view[rowNum][col] = scanned[keepPlaceOneD];
+                    keepPlaceOneD++;
                 }
             } else {
                 for (int col = view[rowNum].length - 1; col >= 0; col--) {
-                    view[rowNum][view[rowNum].length - 1 - col] = scanned[col];
+                    view[rowNum][view[rowNum].length - 1 - col] = scanned[keepPlaceOneD];
+                    keepPlaceOneD++;
                 }
 
             }
@@ -33,7 +36,7 @@ public class SkyView {
     public String toString() {
         String prep2Return = "";
         for (int r = 0; r < view.length; r++) {
-            for (int c = 0; c < view[r].length;) {
+            for (int c = 0; c < view[r].length; c++) {
                 prep2Return += "" + view[r][c] + " ";
             }
             prep2Return += "\n";
@@ -52,7 +55,7 @@ public class SkyView {
         return true;
     }
 
-    public double average(int startRow, int endRow, int startCol, int endCol) {
+    public double getAverage(int startRow, int endRow, int startCol, int endCol) {
         if (startRow < 0 || endRow >= view.length || startCol < 0 || endCol >= view[0].length) {
             throw new IllegalArgumentException("Parameters can't be out of bounds.");
         }

@@ -10,6 +10,7 @@ public class TestResults {
         }
         this.answerKey = key;
         this.submissions = submissions;
+        gradeTests();
     }
 
     // getters
@@ -18,7 +19,7 @@ public class TestResults {
         return this.answerKey;
     }
 
-    public ArrayList<StudentAnswerSheet> getSubs() {
+    public ArrayList<StudentAnswerSheet> getSubmissions() {
         return this.submissions;
     }
 
@@ -28,7 +29,7 @@ public class TestResults {
         this.answerKey = newKey;
     }
 
-    public void setSubs(ArrayList<StudentAnswerSheet> subs) {
+    public void setSubmissions(ArrayList<StudentAnswerSheet> subs) {
         this.submissions = subs;
     }
 
@@ -40,18 +41,23 @@ public class TestResults {
 
     public void gradeTests() {
         for (int row = 0; row < submissions.size(); row++) {
-
+            StudentAnswerSheet stu = submissions.get(row);
+            stu.setTestScore(stu.getGrade(answerKey));
         }
     }
 
     public String highestScoringStudent() {
-        String highestScorer = "";
-        for (int r = 0; r < submissions.size(); r++) {
-            if (submissions.getScore(r + 1) > submissions.getScore(r)) {
-                highestScorer = submissions.getName(r);
+        if (submissions.size() == 0) {
+            return "";
+        } else {
+            String highestScorer = "";
+            for (int i = 0; i < submissions.size() - 1; i++) {
+                if (submissions.get(i + 1).getScore() > submissions.get(i).getScore()) {
+                    highestScorer = submissions.get(i + 1).getName();
+                }
             }
+            return highestScorer;
         }
-        return highestScorer;
     }
 
 }
